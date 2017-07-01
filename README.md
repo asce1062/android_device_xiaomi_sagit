@@ -29,4 +29,5 @@ Camera  | Dual 12 MP, f/2.0, phase detection autofocus, dual-LED (dual tone) fla
  * LineageOS team
  * thune-xiaobai
  * DanWard
+ * Vgdn1942
 
