@@ -9,5 +9,8 @@
   <project name="mi6devs/android_hardware_qcom_media" path="hardware/qcom/media-caf/msm8998" groups="qcom" revision="cm-14.1-caf-8998"/>
   <project name="mi6devs/android_hardware_qcom_display" path="hardware/qcom/display-caf/msm8998" groups="qcom" revision="cm-14.1-caf-8998" />
   <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" revision="cm-14.1" />
+  <project path="vendor/nxp-nfc/opensource/frameworks" name="LineageOS/android_vendor_nxp-nfc_opensource_frameworks" />
+  <project path="vendor/nxp-nfc/opensource/libnfc-nci" name="LineageOS/android_vendor_nxp-nfc_opensource_libnfc-nci" />
+  <project path="vendor/nxp-nfc/opensource/Nfc" name="LineageOS/android_vendor_nxp-nfc_opensource_Nfc" />
 
 </manifest>
