@@ -255,6 +255,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.msm8998
 
+# Messaging
+PRODUCT_PACKAGES += \
+    messaging \
+    Stk
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
