@@ -125,6 +125,7 @@ on boot
     write /dev/cpuset/foreground/boost/cpus 0-7
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
+    setprop ro.nfc.port "I2C"
     chmod 0660 /dev/pn553
     chown nfc nfc /dev/pn553
    ####Regionalization config and prop files####

@@ -425,6 +425,12 @@ on post-fs-data
     mkdir /data/misc/qdmastats 0700 system system
     mkdir /data/misc/qdma 0770 system system
 
+service nqnfcinfo /system/vendor/bin/nqnfcinfo
+    class late_start
+    group nfc
+    user system
+    oneshot
+
 service perfd /system/vendor/bin/perfd
    class main
    user root

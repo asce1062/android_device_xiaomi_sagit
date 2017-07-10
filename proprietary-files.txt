@@ -876,6 +876,7 @@ vendor/lib/libconnctrl.so
 vendor/lib/libcsm_data.so
 
 # NFC firmware
+vendor/bin/nqnfcinfo
 vendor/firmware/libpn553_fw.so
 
 # Perf
