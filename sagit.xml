@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+  <remote fetch="https://source.codeaurora.org/quic/la/" name="caf" review="codeaurora.org"/>
+  <project remote="caf" name="kernel/msm-4.4" path="kernel/xiaomi/msm8998" revision="d51b6bb2a50879a1ebc426c5f30563f74501bd4f" upstream="kernel.lnx.4.4.r13-rel"/>
 
-  <remove-project name="LineageOS/android_hardware_qcom_audio" />
-  <remove-project name="LineageOS/android_hardware_qcom_media" />
-  <remove-project name="LineageOS/android_hardware_qcom_display" />
-
-  <project name="mi6devs/android_hardware_qcom_audio" path="hardware/qcom/audio-caf/msm8998" groups="qcom" revision="cm-14.1-caf-8998"/>
-  <project name="mi6devs/android_hardware_qcom_media" path="hardware/qcom/media-caf/msm8998" groups="qcom" revision="cm-14.1-caf-8998"/>
-  <project name="mi6devs/android_hardware_qcom_display" path="hardware/qcom/display-caf/msm8998" groups="qcom" revision="cm-14.1-caf-8998" />
+  <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="cm-14.1"/>
   <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" revision="cm-14.1" />
   <project path="vendor/nxp-nfc/opensource/frameworks" name="LineageOS/android_vendor_nxp-nfc_opensource_frameworks" />
   <project path="vendor/nxp-nfc/opensource/libnfc-nci" name="LineageOS/android_vendor_nxp-nfc_opensource_libnfc-nci" />
