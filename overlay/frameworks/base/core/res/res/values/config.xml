@@ -32,8 +32,6 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>1</item>
-        <item>4</item>
         <item>5</item>
         <item>8</item>
         <item>13</item>
@@ -62,8 +60,6 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>2</item>
-        <item>3</item>
         <item>3</item>
         <item>15</item>
         <item>15</item>
