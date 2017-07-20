@@ -11,4 +11,7 @@ PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.aicp.maintainer=Verevka-dev
+
 include vendor/aicp/configs/bootanimation.mk
