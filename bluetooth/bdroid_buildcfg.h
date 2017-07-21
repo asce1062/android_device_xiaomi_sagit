@@ -22,13 +22,8 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 #define BTM_DEF_LOCAL_NAME   "Xiaomi MI 6"
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-#define BLUETOOTH_QTI_SW TRUE
 #define MAX_ACL_CONNECTIONS   16
 #define MAX_L2CAP_CHANNELS    20
 #define BLE_VND_INCLUDED   TRUE
-// skips conn update at conn completion
-#define BTA_BLE_SKIP_CONN_UPD  FALSE
-#define BLE_PERIPHERAL_ADV_NAME  FALSE
 #define BT_CLEAN_TURN_ON_DISABLED 1
 #endif
