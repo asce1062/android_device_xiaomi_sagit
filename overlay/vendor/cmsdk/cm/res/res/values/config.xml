@@ -35,7 +35,7 @@
 
          For example, a device support pulsating, RGB notification and
          battery LEDs would set this config to 11. -->
-    <integer name="config_deviceLightCapabilities">43</integer>
+    <integer name="config_deviceLightCapabilities">8</integer>
 
     <!-- Color temperature settings for LiveDisplay. These were obtained by
          measuring the display at various color balance levels. -->
