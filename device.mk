@@ -209,6 +209,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
+# Open gapps
+GAPPS_VARIANT := pico
+
+$(call inherit-product, vendor/google/build/opengapps-packages.mk)
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
