@@ -51,9 +51,9 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8998
-TARGET_KERNEL_CONFIG := sagit_defconfig
+TARGET_KERNEL_CONFIG := msm_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_PREBUILT_KERNEL := device/xiaomi/prebuilt/zImage
+TARGET_PREBUILT_KERNEL := device/xiaomi/sagit/prebuilt/kernel
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
