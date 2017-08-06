@@ -112,6 +112,9 @@ on post-fs-data
     mkdir /data/misc/qdmastats 0700 system system
     mkdir /data/misc/qdma 0770 system system
 
+    # Create oemnvitems for RIL
+    mkdir /data/oemnvitems  0771 radio radio
+
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
