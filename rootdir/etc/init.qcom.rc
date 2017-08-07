@@ -669,6 +669,8 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
+    group root wifi wakelock radio inet
     group radio system wakelock
 
 service ipacm-diag /system/bin/ipacm-diag
