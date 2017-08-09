@@ -26,10 +26,10 @@
 #
 
 on charger
-#    mkdir /dev/usb-ffs 0770 shell shell
-#    mkdir /dev/usb-ffs/adb 0770 shell shell
-#    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-#    setprop sys.usb.configfs 0
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+    setprop sys.usb.configfs 0
 #    setprop sys.usb.config adb
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
