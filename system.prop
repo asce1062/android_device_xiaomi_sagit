@@ -259,7 +259,7 @@ persist.sys.klo=on
 persist.sys.whetstone.level=2
 ro.carrier=unknown
 ro.vendor.extension_library=libqti-perfd-client.so
-ro.hardware.power_library=/system/lib/hw/power.qcom.so
+ro.hardware.power_library=/system/lib/hw/power.msm8998.so
 persist.radio.sib16_support=1
 persist.radio.custom_ecc=1
 persist.radio.multisim.config=dsds
@@ -280,3 +280,12 @@ audio.adm.buffering.ms=3
 persist.radio.apm_sim_not_pwdn=1
 persist.added_boot_bgservices=4
 persist.radio.redir_party_num=1
+
+# Hardware Info
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.device.chipset=Qualcomm MSM89998 Snapdragon 835
+    ro.device.gpu=Qualcomm Adreno 540
+    ro.device.rear_cam=dual 12 MP
+    ro.device.front_cam=8 MP
+    ro.device.screen_res=1080 x 1920 (~480 ppi)
+
