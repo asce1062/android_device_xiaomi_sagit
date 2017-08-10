@@ -1,0 +1,384 @@
+From cbd5843276b58d36f15c8b0190de4e5ae776078a Mon Sep 17 00:00:00 2001
+From: ahmedsh <ahmedsh@codeaurora.org>
+Date: Thu, 8 Dec 2016 17:18:03 -0500
+Subject: [PATCH] SEEMP: Adding auth framework for outgoing SMS messages.
+
+This change adds the APIs required to register an authorization agent
+in order to allow/reject outgoing SMS messages and the core service
+that implements the sms security model.
+
+Change-Id: I5f7195dbdf1d6ff9e0bc5b3118d4a585b51bead8
+---
+ Android.mk                                         |   2 +
+ core/res/AndroidManifest.xml                       |   5 +
+ core/res/res/values/config.xml                     |   6 +
+ core/res/res/values/symbols.xml                    |   3 +
+ .../internal/telephony/ISmsSecurityAgent.aidl      |  51 +++++++++
+ .../internal/telephony/ISmsSecurityService.aidl    |  73 ++++++++++++
+ .../telephony/SmsAuthorizationRequest.aidl         |  33 ++++++
+ .../telephony/SmsAuthorizationRequest.java         | 122 +++++++++++++++++++++
+ 8 files changed, 295 insertions(+)
+ create mode 100644 telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl
+ create mode 100644 telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl
+ create mode 100644 telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.aidl
+ create mode 100644 telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.java
+
+diff --git a/Android.mk b/Android.mk
+index 7f06a7a02ad..edfc56fa094 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -468,6 +468,8 @@ LOCAL_SRC_FILES += \
+ 	packages/services/Proxy/com/android/net/IProxyPortListener.aidl \
+ 	core/java/android/service/quicksettings/IQSService.aidl \
+ 	core/java/android/service/quicksettings/IQSTileService.aidl \
++	telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl \
++	telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl \
+ 
+ # The following are native binders that need to go with the native component
+ # at system/update_engine/binder_bindings/. Use relative path to refer to them.
+diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xml
+index 67f135c5d1a..5f9d8db3334 100644
+--- a/core/res/AndroidManifest.xml
++++ b/core/res/AndroidManifest.xml
+@@ -1107,6 +1107,11 @@
+     <permission android:name="android.permission.MODIFY_CELL_BROADCASTS"
+                 android:protectionLevel="signature|privileged" />
+ 
++    <!-- Allows an application to authorize outgoing SMS messages.
++         @hide -->
++    <permission android:name="android.permission.AUTHORIZE_OUTGOING_SMS"
++                android:protectionLevel="signature" />
++
+     <!-- =============================================================== -->
+     <!-- Permissions for setting the device alarm                        -->
+     <!-- =============================================================== -->
+diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
+index 28d6fd6..992ab0c 100755
+--- a/core/res/res/values/config.xml
++++ b/core/res/res/values/config.xml
+@@ -2949,4 +2949,10 @@
+     <!-- If enabled, capacitive keys will only light up when pressed.
+          Otherwise, the buttons will light up whenever the user interacts with the device -->
+     <bool name="config_buttonLightOnKeypressOnly">false</bool>
++
++    <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
++    <integer name="config_sms_authorization_timeout_ms">0</integer>
++
++    <!-- Enable sms authorization framework-->
++    <bool name="config_sms_authorization_enabled">false</bool>
+ </resources>
+diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
+index 7154e94124c..f14a20c2bd4 100755
+--- a/core/res/res/values/symbols.xml
++++ b/core/res/res/values/symbols.xml
+@@ -2851,4 +2851,7 @@
+   <java-symbol type="bool" name="use_lock_pattern_drawable" />
+   <java-symbol type="drawable" name="lockscreen_notselected" />
+   <java-symbol type="drawable" name="lockscreen_selected" />
++
++  <java-symbol type="integer" name="config_sms_authorization_timeout_ms" />
++  <java-symbol type="bool" name="config_sms_authorization_enabled" />
+ </resources>
+diff --git a/telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl b/telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl
+new file mode 100644
+index 00000000000..3b525292cb2
+--- /dev/null
++++ b/telephony/java/com/android/internal/telephony/ISmsSecurityAgent.aidl
+@@ -0,0 +1,51 @@
++/*
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are
++ * met:
++ *   * Redistributions of source code must retain the above copyright
++ *     notice, this list of conditions and the following disclaimer.
++ *   * Redistributions in binary form must reproduce the above
++ *     copyright notice, this list of conditions and the following
++ *     disclaimer in the documentation and/or other materials provided
++ *     with the distribution.
++ *   * Neither the name of The Linux Foundation nor the names of its
++ *     contributors may be used to endorse or promote products derived
++ *     from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++package com.android.internal.telephony;
++
++import com.android.internal.telephony.SmsAuthorizationRequest;
++
++/**
++ * ISmsSecurityAgent enhances the security of outgoing SMS messages by allowing trusted system
++ * components to inspect and authorize or reject outgoing SMS messages.
++ *
++ * @hide
++ **/
++interface ISmsSecurityAgent {
++    /**
++     * Called when a SMS message is queued for dispatch allowing a registered
++     * agent to decide on whether to accept/reject the request to send an SMS message.
++     * <b>Unless the agent rejects the request within the OEM specific timeout, the SMS
++     * will be sent.</b>
++     * @param request the object containing information regarding the message and
++     *                through which the agent can accept/reject the request.
++     */
++    void onAuthorize(in SmsAuthorizationRequest request);
++
++}
+diff --git a/telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl b/telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl
+new file mode 100644
+index 00000000000..e479f0c1f67
+--- /dev/null
++++ b/telephony/java/com/android/internal/telephony/ISmsSecurityService.aidl
+@@ -0,0 +1,73 @@
++/*
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are
++ * met:
++ *   * Redistributions of source code must retain the above copyright
++ *     notice, this list of conditions and the following disclaimer.
++ *   * Redistributions in binary form must reproduce the above
++ *     copyright notice, this list of conditions and the following
++ *     disclaimer in the documentation and/or other materials provided
++ *     with the distribution.
++ *   * Neither the name of The Linux Foundation nor the names of its
++ *     contributors may be used to endorse or promote products derived
++ *     from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++package com.android.internal.telephony;
++
++import com.android.internal.telephony.ISmsSecurityAgent;
++import com.android.internal.telephony.SmsAuthorizationRequest;
++
++/**
++ * ISmsSecurityService exposes a service that monitors the dispatch of outgoing SMS messages
++ * and notifies a registered ISmsSecurityAgent in order to authorize or reject the dispatch
++ * of each outgoing SMS message.
++ *
++ * @hide
++ */
++interface ISmsSecurityService {
++    /**
++     * Registers an agent in order to receive requests for outgoing SMS messages on which
++     * it can accept or reject the request for the dispatch of each SMS message.
++     * <b>Only one agent can be registered at one time.</b>
++     * @param agent the agent to be registered.
++     * @return true if the registration succeeds, false otherwise.
++     */
++    boolean register(in ISmsSecurityAgent agent);
++
++    /**
++     * Unregisters the previously registered agent and causes the security
++     * service to no longer rely on the agent for a decision regarding
++     * successive SMS messages being dispatched allowing all successive messages to be dispatched.
++     *
++     * @param agent the agent to be unregistered.
++     * @return true if the unregistration succeeds, false otherwise.
++     */
++    boolean unregister(in ISmsSecurityAgent agent);
++
++    /**
++     * Allows the registered ISmsSecurityAgent implementation to asynchronously send a response
++     * on whether it will accept/reject the dispatch of the SMS message.
++     * <b>If the agent responds after the OEM defined timeout it may not be able to
++     * interfere on whether the SMS was sent or not.</b>
++     * @param request the request related to an outgoing SMS message to accept/reject.
++     * @param accepted true to accept, false to reject.
++     * return true if the response took effect, false if a response has already been sent for this
++     * request or an OEM specific timeout already happened.
++     */
++    boolean sendResponse(in SmsAuthorizationRequest request, boolean authorized);
++}
+diff --git a/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.aidl b/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.aidl
+new file mode 100644
+index 00000000000..a2f7020f9b9
+--- /dev/null
++++ b/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.aidl
+@@ -0,0 +1,33 @@
++/*
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are
++ * met:
++ *   * Redistributions of source code must retain the above copyright
++ *     notice, this list of conditions and the following disclaimer.
++ *   * Redistributions in binary form must reproduce the above
++ *     copyright notice, this list of conditions and the following
++ *     disclaimer in the documentation and/or other materials provided
++ *     with the distribution.
++ *   * Neither the name of The Linux Foundation nor the names of its
++ *     contributors may be used to endorse or promote products derived
++ *     from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++package com.android.internal.telephony;
++
++/** @hide */
++parcelable SmsAuthorizationRequest;
+diff --git a/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.java b/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.java
+new file mode 100644
+index 00000000000..bc64fa80290
+--- /dev/null
++++ b/telephony/java/com/android/internal/telephony/SmsAuthorizationRequest.java
+@@ -0,0 +1,122 @@
++/*
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are
++ * met:
++ *   * Redistributions of source code must retain the above copyright
++ *     notice, this list of conditions and the following disclaimer.
++ *   * Redistributions in binary form must reproduce the above
++ *     copyright notice, this list of conditions and the following
++ *     disclaimer in the documentation and/or other materials provided
++ *     with the distribution.
++ *   * Neither the name of The Linux Foundation nor the names of its
++ *     contributors may be used to endorse or promote products derived
++ *     from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++package com.android.internal.telephony;
++
++import android.os.IBinder;
++import android.os.Parcel;
++import android.os.Parcelable;
++import android.os.RemoteException;
++
++/**
++ * This class represents a request from the {@link ISmsSecurityService} to trusted parties
++ * in order to allow third party components to participate in the decision process to accept
++ * or reject a request to send an SMS message.
++ *
++ * @hide
++ */
++public class SmsAuthorizationRequest implements Parcelable {
++
++    private final ISmsSecurityService service;
++
++    private final IBinder token;
++
++    public final String packageName;
++
++    public final String destinationAddress;
++
++    public final String message;
++
++    public SmsAuthorizationRequest(final Parcel source) {
++        this.service = ISmsSecurityService.Stub.asInterface(source.readStrongBinder());
++        this.token = source.readStrongBinder();
++        this.packageName = source.readString();
++        this.destinationAddress = source.readString();
++        this.message = source.readString();
++    }
++
++    public SmsAuthorizationRequest(final ISmsSecurityService service,
++            final IBinder binderToken,
++            final String packageName,
++            final String destinationAddress,
++            final String message) {
++        this.service = service;
++        this.token = binderToken;
++        this.packageName = packageName;
++        this.destinationAddress = destinationAddress;
++        this.message = message;
++    }
++
++    @Override
++    public void writeToParcel(final Parcel dest, final int flags) {
++        dest.writeStrongBinder(service.asBinder());
++        dest.writeStrongBinder(token);
++        dest.writeString(packageName);
++        dest.writeString(destinationAddress);
++        dest.writeString(message);
++    }
++
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++
++    public static Parcelable.Creator<SmsAuthorizationRequest> CREATOR =
++            new Creator<SmsAuthorizationRequest>() {
++        @Override
++        public SmsAuthorizationRequest[] newArray(final int size) {
++            return new SmsAuthorizationRequest[size];
++        }
++
++        @Override
++        public SmsAuthorizationRequest createFromParcel(final Parcel source) {
++            return new SmsAuthorizationRequest(source);
++        }
++    };
++
++    public void accept() throws RemoteException{
++        service.sendResponse(this, true);
++    }
++
++    public void reject() throws RemoteException {
++        service.sendResponse(this, false);
++    }
++
++    public IBinder getToken() {
++        return token;
++    }
++
++    @Override
++    public String toString() {
++        return String.format("[%s] (%s) # %s",
++                this.packageName,
++                this.destinationAddress,
++                this.message);
++    }
++}
