@@ -21,12 +21,6 @@
 # function: add_lunch_combo generic-eng
 
 for var in eng user userdebug; do
-<<<<<<< HEAD
   add_lunch_combo lineage_sagit-$var
 done
 sh device/xiaomi/sagit/patches/install.sh
-=======
-  add_lunch_combo aicp_sagit-$var
-done
-cp -f device/xiaomi/sagit/aicp.mk vendor/aicp/products/sagit.mk
->>>>>>> upstream/AICP-12.1

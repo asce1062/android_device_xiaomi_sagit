@@ -218,11 +218,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # Open gapps
-<<<<<<< HEAD
 GAPPS_VARIANT := full
-=======
-GAPPS_VARIANT := pico
->>>>>>> upstream/AICP-12.1
 
 $(call inherit-product, vendor/google/build/opengapps-packages.mk)
 
