@@ -23,3 +23,4 @@
 for var in eng user userdebug; do
   add_lunch_combo lineage_sagit-$var
 done
+sh device/xiaomi/sagit/patches/install.sh
