@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+  <!-- Sagit's device config -->
+  <remote  name="vendor_sagit" fetch="https://github.com/asce1062" revision="refs/heads/master"/>
+  <project path="vendor/xiaomi/sagit" name="proprietary_vendor_xiaomi_sagit" remote="vendor_sagit"/>
+
   <remote fetch="https://source.codeaurora.org/quic/la/" name="caf" review="codeaurora.org"/>
   <project remote="caf" name="kernel/msm-4.4" path="kernel/xiaomi/msm8998" revision="d51b6bb2a50879a1ebc426c5f30563f74501bd4f" upstream="kernel.lnx.4.4.r13-rel"/>
 

@@ -218,7 +218,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # Open gapps
-GAPPS_VARIANT := pico
+GAPPS_VARIANT := full
 
 $(call inherit-product, vendor/google/build/opengapps-packages.mk)
 
