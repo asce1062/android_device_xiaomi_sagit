@@ -74,8 +74,8 @@ vendor/lib/libqtigef.so
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
-vendor/lib64/libbtnv.so
-vendor/lib/libbtnv.so
+-vendor/lib64/libbtnv.so
+-vendor/lib/libbtnv.so
 
 # Bluetooth firmware
 
