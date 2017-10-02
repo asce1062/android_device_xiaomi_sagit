@@ -272,3 +272,11 @@ persist.audio.dirac.speaker=true
 persist.audio.speaker.dualmode=true
 
 ro.wlan.mimo=1
+
+# Hardware Info
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.device.chipset=Qualcomm MSM89998 Snapdragon 835
+    ro.device.gpu=Qualcomm Adreno 540
+    ro.device.rear_cam=dual 12.2 MP
+    ro.device.front_cam=8.0 MP
+    ro.device.screen_res=1080 x 1920 (~480 ppi)
