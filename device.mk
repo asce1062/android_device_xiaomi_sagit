@@ -153,6 +153,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Google Photos
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8998 \
