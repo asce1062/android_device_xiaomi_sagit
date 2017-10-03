@@ -204,6 +204,8 @@ persist.radio.dynamic_sar=false
 
 #Expose tele camera for below packages
 camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,org.cyanogenmod.snap
+#force HAL1 for below packages
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp
 
 #Supported SE type
 ro.se.type=eSE,HCE
