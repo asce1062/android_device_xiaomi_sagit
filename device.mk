@@ -258,6 +258,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# QPerformance
+    PRODUCT_BOOT_JARS += QPerformance
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
