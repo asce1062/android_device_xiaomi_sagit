@@ -282,3 +282,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.device.rear_cam=dual 12.2 MP
     ro.device.front_cam=8.0 MP
     ro.device.screen_res=1080 x 1920 (~480 ppi)
+
+# Battery tweaks
+ro.mot.eri.losalert.delay 1000
+ro.ril.disable.power.collapse 1
+pm.sleep_mode 2
+wifi.supplicant_scan_interval 180
+power_supply.wakeup enable
+power.saving.mode 1
+ro.config.hw_power_saving 1
+ro.vold.umsdirtyratio 20
