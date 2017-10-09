@@ -222,8 +222,8 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_sagit
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
-PROTOBUF_SUPPORTED := true
-TARGET_RIL_VARIANT := caf
+#PROTOBUF_SUPPORTED := true
+#TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
