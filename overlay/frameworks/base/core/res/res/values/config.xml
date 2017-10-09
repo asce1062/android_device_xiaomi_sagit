@@ -529,4 +529,7 @@
          scaled proportionally to the smaller buckets.  -1 keeps the default. -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">409600</integer>
 
+    <!-- Indicate that this device has Dash Charger -->
+    <bool name="config_hasDashCharger">true</bool>
+
 </resources>
