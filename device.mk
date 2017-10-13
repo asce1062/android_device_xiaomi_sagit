@@ -247,6 +247,7 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVdec \
+    libOmxVdecHevc \
     libOmxVenc \
     libstagefrighthw
 
@@ -257,6 +258,9 @@ PRODUCT_PACKAGES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson
+
+# QPerformance
+    PRODUCT_BOOT_JARS += QPerformance
 
 # Ramdisk
 PRODUCT_PACKAGES += \

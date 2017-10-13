@@ -1,6 +1,3 @@
-# fingerprint
-ro.boot.fingerprint=goodix
-
 ro.sf.lcd_density=480
 
 # System property for AD
@@ -27,7 +24,7 @@ ril.subscription.types=RUIM
 persist.radio.multisim.config=dsds
 DEVICE_PROVISIONED=1
 # Set network mode to (T/L/G/W/1X/EVDO, T/G/W/L) for 7+5 mode device on DSDS mode
-ro.telephony.default_network=10,10
+ro.telephony.default_network=22,22
 
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
@@ -282,3 +279,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.device.rear_cam=dual 12.2 MP
     ro.device.front_cam=8.0 MP
     ro.device.screen_res=1080 x 1920 (~480 ppi)
+
+# Battery tweaks
+ro.mot.eri.losalert.delay 1000
+ro.ril.disable.power.collapse 1
+pm.sleep_mode 2
+wifi.supplicant_scan_interval 180
+power_supply.wakeup enable
+power.saving.mode 1
+ro.config.hw_power_saving 1
+ro.vold.umsdirtyratio 20
