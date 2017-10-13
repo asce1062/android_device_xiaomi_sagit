@@ -12,20 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
 # Inherit from Xiaomi MI6 device
-$(call inherit-product, device/xiaomi/sagit/device.mk)
+$(call inherit-product, device/xiaomi/sagit/full_sagit.mk)
 
-# Inherit some common AICP stuff.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
-
-PRODUCT_NAME := aicp_sagit
+PRODUCT_NAME := lineage_sagit
 PRODUCT_DEVICE := sagit
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 6
@@ -41,10 +34,3 @@ PRODUCT_PACKAGES += \
     OpenWeatherMapWeatherProvider \
     YahooWeatherProvider \
     WundergroundWeatherProvider
-
-# AICP Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DEVICE_MAINTAINERS="Verevka-dev"
-
-# Boot animation
-include vendor/aicp/configs/bootanimation.mk
