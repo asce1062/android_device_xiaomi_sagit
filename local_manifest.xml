@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <!-- Sagit's device config -->
+	<!-- Sagit's device config -->
 	<remote name="sagit" fetch="https://github.com/asce1062" revision="refs/heads/rr-n"/>
 	<project path="vendor/xiaomi/sagit" name="proprietary_vendor_xiaomi_sagit" remote="sagit"/>
 	<project path="device/xiaomi/sagit" name="android_device_xiaomi_sagit" remote="sagit"/>
-  <project path="kernel/xiaomi/msm8998" name="Verevka/android_kernel_xiaomi_msm8998" remote="github" revision="cm-14.1" />
-  <!--Repositories to replace-->
+	<project path="kernel/xiaomi/msm8998" name="Demon000/kernel_xiaomi_msm8998" remote="github" revision="cm-14.1" />
+	<!--Repositories to replace-->
 	<project name="LineageOS/android_external_busybox" path="external/busybox" revision="cm-14.1" />
 	<project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="cm-14.1"/>
 	<project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" revision="cm-14.1" />
