@@ -116,7 +116,11 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    MiuiCamera
+
+# Prebuilt
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/xiaomi/sagit/prebuilt/system,system)
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -144,6 +148,10 @@ PRODUCT_PACKAGES += \
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
+
+# Google Photos
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -182,7 +190,6 @@ PRODUCT_COPY_FILES += \
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
-
 
 # Lights
 PRODUCT_PACKAGES += \
