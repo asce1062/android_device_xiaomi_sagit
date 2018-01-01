@@ -45,6 +45,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.sagit.rc
+
+# TFA calibration
+PRODUCT_PACKAGES += \
+    init.tfa.sh \
+    tinyplay
+
 $(call inherit-product, vendor/goodies/config.mk)
 
 # Call the proprietary setup

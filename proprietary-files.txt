@@ -13,6 +13,9 @@ vendor/etc/acdbdata/Forte/Forte_workspaceFile.qwsp
 etc/firmware/tfa98xx_aac.cnt:vendor/firmware/tfa98xx_aac.cnt
 etc/firmware/tfa98xx_ssi.cnt:vendor/firmware/tfa98xx_ssi.cnt
 
+# Audio amplifier calibration sound
+etc/silence_short.wav:vendor/etc/silence_short.wav
+
 # Camera
 etc/dualcamera.png:vendor/etc/dualcamera.png
 
