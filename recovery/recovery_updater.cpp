@@ -26,19 +26,19 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <string>
+#include <vector>
+
 #include "edify/expr.h"
-#include "updater/install.h"
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
 #define ALPHABET_LEN 256
-#define KB 1024
 
 #define TZ_PART_PATH "/dev/block/bootdevice/by-name/tz"
 #define TZ_VER_STR "QC_IMAGE_VERSION_STRING="
 #define TZ_VER_STR_LEN 24
 #define TZ_VER_BUF_LEN 255
-#define TZ_SZ 4096 * KB    /* MMAP 4096K of TZ, TZ partition is 4096K */
 
 /* Boyer-Moore string search implementation from Wikipedia */
 
@@ -121,6 +121,7 @@ static char * bm_search(const char *str, size_t str_len, const char *pat,
 static int get_tz_version(char *ver_str, size_t len) {
     int ret = 0;
     int fd;
+    int tz_size;
     char *tz_data = NULL;
     char *offset = NULL;
 
@@ -130,21 +131,27 @@ static int get_tz_version(char *ver_str, size_t len) {
         goto err_ret;
     }
 
-    tz_data = (char *) mmap(NULL, TZ_SZ, PROT_READ, MAP_PRIVATE, fd, 0);
+    tz_size = lseek64(fd, 0, SEEK_END);
+    if (tz_size == -1) {
+        ret = errno;
+        goto err_fd_close;
+    }
+
+    tz_data = (char *) mmap(NULL, tz_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (tz_data == (char *)-1) {
         ret = errno;
         goto err_fd_close;
     }
 
     /* Do Boyer-Moore search across TZ data */
-    offset = bm_search(tz_data, TZ_SZ, TZ_VER_STR, TZ_VER_STR_LEN);
+    offset = bm_search(tz_data, tz_size, TZ_VER_STR, TZ_VER_STR_LEN);
     if (offset != NULL) {
         strncpy(ver_str, offset + TZ_VER_STR_LEN, len);
     } else {
         ret = -ENOENT;
     }
 
-    munmap(tz_data, TZ_SZ);
+    munmap(tz_data, tz_size);
 err_fd_close:
     close(fd);
 err_ret:
@@ -152,34 +159,31 @@ err_ret:
 }
 
 /* verify_trustzone("TZ_VERSION", "TZ_VERSION", ...) */
-Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]) {
+Value* VerifyTrustZoneFn(const char *name, State *state,
+                         const std::vector<std::unique_ptr<Expr>>& argv) {
     char current_tz_version[TZ_VER_BUF_LEN];
-    int i, ret;
+    int ret;
 
     ret = get_tz_version(current_tz_version, TZ_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, "%s() failed to read current TZ version: %d",
-                name, ret);
+        return ErrorAbort(state, kVendorFailure,
+                "%s() failed to read current TZ version: %d", name, ret);
     }
 
-    char** tz_version = ReadVarArgs(state, argc, argv);
-    if (tz_version == NULL) {
-        return ErrorAbort(state, "%s() error parsing arguments", name);
+    std::vector<std::string> args;
+    if (!ReadArgs(state, argv, &args)) {
+        return ErrorAbort(state, kArgsParsingFailure,
+                "%s() error parsing arguments", name);
     }
 
     ret = 0;
-    for (i = 0; i < argc; i++) {
-        uiPrintf(state, "Checking for TZ version %s\n", tz_version[i]);
-        if (strncmp(tz_version[i], current_tz_version, strlen(tz_version[i])) == 0) {
+    for (auto& tz_version : args) {
+        //uiPrintf(state, "Checking for TZ version %s\n", tz_version.c_str());
+        if (strncmp(tz_version.c_str(), current_tz_version, strlen(tz_version.c_str())) == 0) {
             ret = 1;
             break;
         }
     }
-
-    for (i = 0; i < argc; i++) {
-        free(tz_version[i]);
-    }
-    free(tz_version);
 
     return StringValue(strdup(ret ? "1" : "0"));
 }
