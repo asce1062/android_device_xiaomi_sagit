@@ -171,7 +171,7 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # GPS
 TARGET_NO_RPC := true
@@ -183,7 +183,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Lineage Hardware
 BOARD_HARDWARE_CLASS += \
-    $(VENDOR_PATH)/lineagehw
+    $(DEVICE_PATH)/lineagehw
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
