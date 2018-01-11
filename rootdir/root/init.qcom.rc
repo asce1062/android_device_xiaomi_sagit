@@ -625,8 +625,8 @@ on property:persist.download_mode=1
 service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950 system wakelock
-    seclabel u:r:bluetooth:s0
+    group bluetooth diag system oem_2950
+    seclabel u:r:wcnss_filter:s0
     disabled
 
 on property:wc_transport.start_root=true
@@ -635,10 +635,11 @@ on property:wc_transport.start_root=true
 on property:wc_transport.start_root=false
     stop hci_filter_root
 
-service hci_filter_root /system/bin/wcnss_filter
+service hci_filter_root /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950 system
+    group bluetooth diag system oem_2950
+    seclabel u:r:wcnss_filter:s0
     disabled
 
 service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
