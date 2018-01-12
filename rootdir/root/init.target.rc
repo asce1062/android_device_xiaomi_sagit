@@ -184,6 +184,9 @@ on boot
 #Load WLAN driver
    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
+   # Generate bt mac
+   start bt-mac-generator
+
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
     class core
@@ -208,6 +211,13 @@ on property:init.svc.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop per_proxy
+
+service bt-mac-generator /system/vendor/bin/bt-mac-generator
+    class main
+    user root
+    group root
+    oneshot
+    disabled
 
 on charger
     write /sys/class/input/input0/enabled 0
