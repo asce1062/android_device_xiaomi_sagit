@@ -1,4 +1,5 @@
-#!/system/bin/sh
+#! /vendor/bin/sh
+
 # Copyright (c) 2009-2016, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -80,18 +81,44 @@ start_vm_bms()
 
 start_msm_irqbalance_8939()
 {
-	if [ -f /system/bin/msm_irqbalance ]; then
+	if [ -f /system/vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
 		    "239" | "293" | "294" | "295" | "304" | "313")
-			start msm_irqbalance;;
+			start vendor.msm_irqbalance;;
+		esac
+	fi
+}
+
+start_msm_irqbalance_8952()
+{
+        if [ -f /system/vendor/bin/msm_irqbalance ]; then
+                case "$platformid" in
+                     "241" | "263" | "264" | "268" | "269" | "270" | "271")
+                        start vendor.msm_irqbalance;;
+                esac
+                case "$platformid" in
+                     "266" | "274" | "277" | "278")
+                        start vendor.msm_irqbal_lb;;
+                esac
+	fi
+}
+
+start_msm_irqbalance660()
+{
+	if [ -f /vendor/bin/msm_irqbalance ]; then
+		case "$platformid" in
+		    "317" | "324" | "325" | "326" | "345" | "346")
+			start vendor.msm_irqbalance;;
+		    "318" | "327")
+			start vendor.msm_irqbl_sdm630;;
 		esac
 	fi
 }
 
 start_msm_irqbalance()
 {
-	if [ -f /system/bin/msm_irqbalance ]; then
-		start msm_irqbalance
+	if [ -f /vendor/bin/msm_irqbalance ]; then
+		start vendor.msm_irqbalance
 	fi
 }
 
@@ -170,9 +197,9 @@ case "$target" in
         ;;
     "sdm660")
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+             soc_id=`cat /sys/devices/soc0/soc_id`
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+             soc_id=`cat /sys/devices/system/soc/soc0/id`
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
@@ -199,7 +226,7 @@ case "$target" in
                   esac
                   ;;
        esac
-        start_msm_irqbalance
+        start_msm_irqbalance660
         ;;
     "apq8084")
         platformvalue=`cat /sys/devices/soc0/hw_platform`
@@ -252,7 +279,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992" | "msm8998")
+    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -279,6 +306,60 @@ case "$target" in
     "msm8909")
         start_vm_bms
         ;;
+    "msm8952")
+        start_msm_irqbalance_8952
+	 if [ -f /sys/devices/soc0/soc_id ]; then
+             soc_id=`cat /sys/devices/soc0/soc_id`
+         else
+             soc_id=`cat /sys/devices/system/soc/soc0/id`
+         fi
+
+	 if [ -f /sys/devices/soc0/platform_subtype_id ]; then
+	      platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+	 fi
+	 if [ -f /sys/devices/soc0/hw_platform ]; then
+	       hw_platform=`cat /sys/devices/soc0/hw_platform`
+	 fi
+	 case "$soc_id" in
+	      "264")
+	           case "$hw_platform" in
+			    "Surf")
+			         case "$platform_subtype_id" in
+			              "1" | "2")
+			                  setprop qemu.hw.mainkeys 0
+			                  ;;
+				  esac
+			          ;;
+			    "MTP")
+			         case "$platform_subtype_id" in
+			              "3")
+			                  setprop qemu.hw.mainkeys 0
+			                  ;;
+				  esac
+			          ;;
+			    "QRD")
+			         case "$platform_subtype_id" in
+			              "0")
+			                  setprop qemu.hw.mainkeys 0
+			                  ;;
+				  esac
+				  ;;
+		     esac
+		     ;;
+		 "266" | "274" | "277" | "278")
+	              case "$hw_platform" in
+			       "Surf" | "RCM")
+                                    if [ $panel_xres -eq 1440 ]; then
+				       setprop qemu.hw.mainkeys 0
+				    fi
+				    ;;
+				"MTP" | "QRD")
+				       setprop qemu.hw.mainkeys 0
+				       ;;
+		      esac
+		      ;;
+	esac
+	;;
     "msm8937")
         start_msm_irqbalance_8939
         if [ -f /sys/devices/soc0/soc_id ]; then
@@ -304,6 +385,9 @@ case "$target" in
                        "RCM")
                                     setprop qemu.hw.mainkeys 0
                                     ;;
+                       "QRD")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
                   esac
                   ;;
        esac
@@ -322,7 +406,7 @@ case "$target" in
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
         case "$soc_id" in
-             "293" | "304" )
+             "293" | "304" | "338" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -333,11 +417,14 @@ case "$target" in
                        "RCM")
                                     setprop qemu.hw.mainkeys 0
                                     ;;
+                       "QRD")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
                   esac
                   ;;
        esac
         ;;
-    esac
+esac
 
 #
 # Copy qcril.db if needed for RIL
