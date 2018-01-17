@@ -367,6 +367,7 @@ PRODUCT_PACKAGES += \
 
 #USB HAL
 PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
     android.hardware.usb@1.0-service
 
 # Vibrator

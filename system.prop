@@ -200,3 +200,7 @@ persist.sys.wfd.virtual=0
 
 # Wlan
 ro.wlan.mimo=1
+
+# USB
+sys.usb.configfs=1
+
