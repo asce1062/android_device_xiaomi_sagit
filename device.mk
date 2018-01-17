@@ -334,10 +334,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librecovery_updater_sagit
 
-# Releasetools
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/fbe_check.sh:install/bin/fbe_check.sh
-
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
