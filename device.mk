@@ -130,6 +130,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    MiuiCamera \
     libshim_MiCamera \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
@@ -310,6 +311,10 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.1-service-qti
+
+# Prebuilt
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/xiaomi/sagit/prebuilt/system,system)
 
 # QMI
 PRODUCT_PACKAGES += \
