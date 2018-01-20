@@ -1042,6 +1042,12 @@ service qvop-daemon /vendor/bin/qvop-daemon
     user system
     group system drmrpc
 
+service readmac /system/vendor/bin/readmac
+    class main
+    user root
+    group root oem_2950
+    oneshot
+
 service atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
