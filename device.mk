@@ -227,7 +227,11 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    RcsService \
+    PresencePolling \
     ims-ext-common
+
 
 # Input
 PRODUCT_COPY_FILES += \
