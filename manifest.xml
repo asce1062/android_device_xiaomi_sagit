@@ -240,7 +240,7 @@
         <version>1.0</version>
         <interface>
             <name>ISensors</name>
-            <instance>default</instance>
+            <instance>msm8998</instance>
         </interface>
     </hal>
 <!--
