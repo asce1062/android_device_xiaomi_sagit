@@ -291,7 +291,3 @@
 
 # Kmsg device
 /dev/kmsg                                               0620   root       system
-
-# peel ir nodes
-/dev/peel_ir                 0660   system       system
-
