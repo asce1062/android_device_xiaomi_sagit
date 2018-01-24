@@ -205,6 +205,5 @@ ro.wlan.mimo=1
 sys.usb.configfs=1
 
 # OTG support
-PRODUCT_PROPERTY_OVERRIDES += \
 persist.sys.oem.otg_support=true
 
