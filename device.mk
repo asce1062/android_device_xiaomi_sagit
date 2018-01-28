@@ -220,7 +220,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-convert \
     android.hardware.health@1.0-impl \
-    android.hardware.health@1.0-service \
+    android.hardware.health@1.0-service
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -233,7 +233,6 @@ PRODUCT_PACKAGES += \
     RcsService \
     PresencePolling \
     ims-ext-common
-
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -291,13 +290,13 @@ PRODUCT_PACKAGES += \
     libavmediaserviceextensions \
     libmediametrics \
     libregistermsext \
-    mediametrics \
+    mediametrics
 
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
     libandroid_net \
-    netutils-wrapper-1.0 \
+    netutils-wrapper-1.0
 
 # NFC
 PRODUCT_PACKAGES += \
