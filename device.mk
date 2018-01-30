@@ -353,10 +353,12 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     librmnetctl \
     libxml2 \
-    libprotobuf-cpp-full
+    libprotobuf-cpp-full \
+    telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    qcrilhook
+    qcrilhook \
+    telephony-ext
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
