@@ -16,6 +16,8 @@
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/xiaomi/sagit/sagit-vendor.mk)
+# HIDL
+$(call inherit-product, device/xiaomi/sagit/hidl/hidl.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -78,10 +80,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.soundtrigger@2.0-impl \
     audio.a2dp.default \
     audio.primary.msm8998 \
     audio.r_submix.default \
@@ -127,8 +125,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl \
-    android.hardware.bluetooth@1.0-service \
     libbt-vendor \
     libbthost_if \
     bt-mac-generator
@@ -136,11 +132,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     MiuiCamera \
-    libshim_MiCamera \
-    camera.device@3.2-impl \
-    android.hardware.camera.provider@2.4-impl \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    libshim_MiCamera
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/camera_config.xml:system/etc/camera/camera_config.xml \
@@ -155,10 +147,6 @@ PRODUCT_PACKAGES += \
     com.quicinc.cne \
     services-ext
 
-# Consumerir
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8998 \
@@ -169,38 +157,14 @@ PRODUCT_PACKAGES += \
     libhwc2on1adapter \
     libgenlock \
     liboverlay \
-    libtinyxml \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.graphics.composer@2.1-impl \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.0_vendor
-
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    android.hardware.drm@1.0-service.widevine
-
-# Fingerprint sensor
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service
+    libtinyxml
 
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti \
     libgnss \
     libgps.utils \
     liblocation_api \
@@ -215,16 +179,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
     $(LOCAL_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/configs/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
-
-PRODUCT_PACKAGES += \
-    android.hardware.health@1.0-convert \
-    android.hardware.health@1.0-impl \
-    android.hardware.health@1.0-service
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0-java
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -256,15 +210,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
-
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
     lights.msm8998
 
 # LiveDisplay jni
@@ -293,14 +240,10 @@ PRODUCT_PACKAGES += \
 
 # Netutils
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.0 \
-    libandroid_net \
-    netutils-wrapper-1.0
+    libandroid_net
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl \
-    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     nfc_nci.msm8998 \
     NfcNci \
@@ -327,10 +270,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
-
 # Powerhint
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
@@ -342,13 +281,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librecovery_updater_sagit
 
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl \
     ims-ext-common \
     librmnetctl \
     libxml2 \
@@ -364,11 +298,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
 
-# Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service
-
 # Tetheroffload
 PRODUCT_PACKAGES += \
     ipacm \
@@ -378,29 +307,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
 
-# Thermal HAL
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service
-
 #USB HAL
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    android.hardware.usb@1.0-service
-
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
-
-# VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-service.sagit
+    com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0 \
-    android.hardware.wifi@1.0-service \
     libwpa_client \
     libqsap_sdk \
     libQWiFiSoftApCfg \
