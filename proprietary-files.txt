@@ -891,6 +891,7 @@ vendor/lib64/vendor.display.postproc@1.0_vendor.so
 
 # QMI
 vendor/bin/irsc_util
+etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 lib64/libqminvapi.so
 lib/libqminvapi.so
