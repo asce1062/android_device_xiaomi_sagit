@@ -1203,3 +1203,11 @@ lib64/libmmparser_lite.so
 lib/libmmparser_lite.so
 -app/WfdService/WfdService.apk
 -framework/WfdCommon.jar
+
+# ANT+
+lib64/com.qualcomm.qti.ant@1.0.so
+lib/com.qualcomm.qti.ant@1.0.so
+vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
