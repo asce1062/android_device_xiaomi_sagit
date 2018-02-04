@@ -1189,3 +1189,6 @@ service power_off_alarm /vendor/bin/power_off_alarm
     group system
     disabled
     oneshot
+
+on property:dev.bootcomplete=1
+    setprop sys.io.scheduler "bfq"
