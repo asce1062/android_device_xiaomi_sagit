@@ -510,7 +510,4 @@
 
     <!-- Device supports Sustained Performance Mode-->
     <bool name="config_sustainedPerformanceModeSupported">true</bool>
-
-    <!-- ManualSubProvisioning -->
-    <bool name="config_enableManualSubProvisioning">true</bool>
 </resources>
