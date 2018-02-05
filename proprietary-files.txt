@@ -768,6 +768,7 @@ vendor/firmware/a540_zap.mdt
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
+vendor/bin/imsrcsd
 etc/permissions/qti-vzw-ims-internal.xml
 vendor/framework/qti-vzw-ims-internal.jar
 -app/ims/ims.apk
