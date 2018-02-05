@@ -36,8 +36,8 @@ caps: BLOCK_SUSPEND NET_ADMIN
 
 [system/bin/cnss-daemon]
 mode: 0755
-user: AID_BLUETOOTH
-group: AID_BLUETOOTH
+user: AID_SYSTEM
+group: AID_SYSTEM
 caps: NET_BIND_SERVICE
 
 [vendor/bin/pm-service]
