@@ -303,19 +303,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
 
-#USB HAL
+# USB HAL
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \
-    libwpa_client \
+    hostapd \
+    hostapd_cli \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+    libwifi-hal-qcom \
     wificond \
-    hostapd \
     readmac \
-    dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
 
