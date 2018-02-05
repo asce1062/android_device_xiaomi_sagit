@@ -1,8 +1,5 @@
 # Sagit related stuff
 
-on early-init
-    exec u:r:modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules wlan
-
 on init
     export LD_SHIM_LIBS /system/lib/libMiCameraHal.so|libshim_MiCamera.so
     # Goodix fingerprint
@@ -10,8 +7,6 @@ on init
 
     write /sys/devices/soc/c179000.i2c/i2c-5/5-0020/input/input1/reversed_keys 1
     write /sys/devices/soc/c179000.i2c/i2c-5/5-0020/input/input7/reversed_keys 1
-
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
@@ -105,7 +100,7 @@ on boot
 
 on property:ro.boot.fingerprint=fpc
     setprop ro.hardware.fingerprint fpc
- 
+
 on property:ro.boot.fingerprint=goodix
     setprop ro.hardware.fingerprint goodix
 
