@@ -64,9 +64,6 @@ ro.bluetooth.wipower=false
 # CABL
 ro.qualcomm.cabl=0
 
-# Camera
-persist.camera.HAL3.enabled=1
-
 # CNE
 persist.cne.feature=1
 
