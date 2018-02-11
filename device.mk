@@ -154,6 +154,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
+# Doze
+PRODUCT_PACKAGES += \
+    XiaomiDoze
+
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
