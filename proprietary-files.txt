@@ -644,7 +644,7 @@ vendor/bin/lowi-server
 etc/permissions/com.qti.location.sdk.xml
 framework/com.qti.location.sdk.jar
 framework/izat.xt.srv.jar
-# -priv-app/com.qualcomm.location/com.qualcomm.location.apk
+etc/permissions/privapp-permissions-com.qualcomm.location.xml
 vendor/lib64/libalarmservice_jni.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libdrplugin_client.so
