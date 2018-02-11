@@ -16,6 +16,9 @@
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/xiaomi/sagit/sagit-vendor.mk)
+
+$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera_prebuild/MiuiCamera-vendor.mk)
+
 # HIDL
 $(call inherit-product, device/xiaomi/sagit/hidl/hidl.mk)
 
