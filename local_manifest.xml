@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+   <!-- Sagit's device config -->
+   <project path="device/xiaomi/sagit" name="asce1062/android_device_xiaomi_sagit" remote="github" revision="rr-o" />
+   <project path="vendor/xiaomi/sagit" name="Verevka/vendor_xiaomi_sagit" remote="github" revision="o8.1" />
+   <project path="vendor/xiaomi/MiuiCamera_prebuild" name="Verevka/vendor_xiaomi_MiuiCamera_prebuild" remote="github" revision="master" />
+   <project path="kernel/xiaomi/msm8998" name="Verevka/kernel_xiaomi_msm8998_8.1" remote="github" revision="o-8.1" />
+   <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="github" revision="refs/heads/staging/lineage-15.1" />
+</manifest>
