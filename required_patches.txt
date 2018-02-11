@@ -1,6 +1,3 @@
-android_packages_apps_Nfc:
-https://review.lineageos.org/#/c/198050/
-
 android_hardware_interfaces:
 https://review.lineageos.org/#/c/200040/
 
