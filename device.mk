@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     libqdMetaData.system
 
+# Fingerprint sensor
+PRODUCT_PACKAGES += \
+    fingerprint.msm8998
+
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
