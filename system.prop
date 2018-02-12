@@ -164,6 +164,7 @@ ro.se.type=eSE,HCE,UICC
 
 # Perf
 persist.sys.perf.debug=true
+ro.vendor.at_library=libqti-at.so
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.qti.core_ctl_max_cpu=4
 ro.vendor.qti.core_ctl_min_cpu=2

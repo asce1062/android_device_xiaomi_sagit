@@ -826,6 +826,8 @@ vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvqzip.so
+vendor/lib/libFlacSwDec.so
+vendor/lib64/libFlacSwDec.so
 
 # Media DRM
 vendor/lib/mediadrm/libwvdrmengine.so
@@ -894,6 +896,14 @@ etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 lib64/libqminvapi.so
 lib/libqminvapi.so
+lib64/libqti-at.so
+lib/libqti-at.so
+lib64/libqti-perfd-client_system.so
+lib/libqti-perfd-client_system.so
+lib64/libqti-util_system.so
+lib/libqti-util_system.so
+lib64/libqti_performance.so
+lib/libqti_performance.so
 vendor/bin/pd-mapper
 vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
