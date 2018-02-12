@@ -467,6 +467,7 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">83</integer>
 
+    <!-- Button backlight -->
     <bool name="config_button_brightness_support">true</bool>
     <integer name="config_button_brightness_default">128</integer>
 
