@@ -894,6 +894,8 @@ etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 lib64/libqminvapi.so
 lib/libqminvapi.so
+lib64/libqti-at.so
+lib/libqti-at.so
 vendor/bin/pd-mapper
 vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
