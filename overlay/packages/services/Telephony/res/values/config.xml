@@ -21,6 +21,7 @@
 
 <!-- Phone app resources that may need to be customized
      for different hardware or product builds. -->
+
 <resources>
     <!-- Determine whether calls to mute the microphone in PhoneUtils
          are routed through the android.media.AudioManager class (true) or through
@@ -32,7 +33,4 @@
 
     <!-- Show enabled lte option for lte device -->
     <bool name="config_enabled_lte" translatable="false">true</bool>
-
-    <!-- Show Preferred Network Type options in No SIM case -->
-    <bool name="config_no_sim_display_network_modes">true</bool>
 </resources>
