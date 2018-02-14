@@ -16,15 +16,23 @@
  * limitations under the License.
  */
 -->
-<resources>
 
+<resources>
     <!-- Set the automatic brightness mode on by default -->
     <bool name="def_screen_brightness_automatic_mode">true</bool>
 
-    <!-- Default screen brightness, from 0 to 255. 78 is 30%. -->
+    <!-- Default screen brightness, from 0 to 255.  102 is 40%. -->
     <integer name="def_screen_brightness">78</integer>
 
     <!-- 30 seconds for default screen timeout -->
     <integer name="def_screen_off_timeout">30000</integer>
 
+    <!-- Default for DTMF tones enabled -->
+    <bool name="def_dtmf_tones_enabled">false</bool>
+
+    <!-- Default for UI touch sounds enabled -->
+    <bool name="def_sound_effects_enabled">false</bool>
+
+    <!-- Default bluetooth enabled -->
+    <bool name="def_bluetooth_on">false</bool>
 </resources>

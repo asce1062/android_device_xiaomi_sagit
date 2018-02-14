@@ -14,7 +14,8 @@
      limitations under the License.
 -->
 
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="?android:attr/colorControlHighlight">
-    <item android:drawable="?android:attr/colorSecondary" />
-</ripple>
+<resources>
+    <!-- Button backlight -->
+    <integer name="config_buttonBrightnessSettingDefault">160</integer>
+    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+</resources>
