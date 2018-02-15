@@ -1021,6 +1021,18 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib/libsns_low_lat_stream_stub.so
 lib/libsns_low_lat_stream_stub.so
 
+# Specific MiuiCamera blobs
+lib/libCameraEffectJNI.so
+lib/libminui.so
+lib/libmorpho_groupshot.so
+lib/libts_detected_face_jni.so
+lib/libts_face_beautify_jni.so
+vendor/lib/libts_detected_face_hal.so
+vendor/lib/libts_face_beautify_hal.so
+lib64/libCameraEffectJNI.so
+lib64/libminui.so
+lib64/libmorpho_groupshot.so
+
 # Thermal
 vendor/etc/thermal-engine.conf
 vendor/etc/thermal-engine-8998.conf
