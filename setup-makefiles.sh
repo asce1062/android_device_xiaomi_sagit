@@ -21,7 +21,7 @@ set -e
 DEVICE=sagit
 VENDOR=xiaomi
 
-INITIAL_COPYRIGHT_YEAR=2017
+INITIAL_COPYRIGHT_YEAR=2018
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -43,7 +43,7 @@ setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 write_headers
 
 # The standard common blobs
-write_makefiles "$MY_DIR"/proprietary-files.txt
+write_makefiles "$MY_DIR"/proprietary-files.txt true
 
 # We are done!
 write_footers
@@ -57,7 +57,7 @@ if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
     write_headers
 
     # The standard device blobs
-    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt
+    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt true
 
     # We are done!
     write_footers
