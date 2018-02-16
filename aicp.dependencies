@@ -1,10 +1,38 @@
 [
   {
-    "repository": "android_device_qcom_common",
-    "target_path": "device/qcom/common"
+    "remote": "github",
+    "repository": "LineageOS/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "revision": "lineage-15.1"
   },
   {
-    "repository": "android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
+    "remote": "github",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "revision": "lineage-15.1"
+  },
+  {
+    "remote": "github",
+    "repository": "ShevT/kernel_xiaomi_msm8998",
+    "target_path": "kernel/xiaomi/msm8998",
+    "revision": "lineage-15.1"
+  },
+  {
+    "remote": "github",
+    "repository": "Verevka/vendor_xiaomi_sagit",
+    "target_path": "vendor/xiaomi/sagit",
+    "revision": "o8.1"
+  },
+  {
+    "remote": "github",
+    "repository": "Verevka/vendor_xiaomi_MiuiCamera_prebuild",
+    "target_path": "vendor/xiaomi/MiuiCamera",
+    "revision": "master"
+  },
+  {
+    "remote": "github",
+    "repository": "ShevT/gcc-linaro",
+    "target_path": "prebuilts/gcc/linux-x86/aarch64/aarch64-linaro-5.5.0-2017.10",
+    "revision": "gcc-5.5.0-aarch64"
   }
 ]
