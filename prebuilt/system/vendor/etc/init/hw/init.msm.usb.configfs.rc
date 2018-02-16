@@ -152,8 +152,8 @@ on property:sys.usb.config=rndis,none && property:sys.usb.configfs=1
     rm /config/usb_gadget/g1/configs/b.1/f3
     rm /config/usb_gadget/g1/configs/b.1/f4
     rm /config/usb_gadget/g1/configs/b.1/f5
-    write /config/usb_gadget/g1/idVendor 0x2717
-    write /config/usb_gadget/g1/idProduct 0xFF80
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
     rm /config/usb_gadget/g1/configs/b.1/f8
     write /config/usb_gadget/g1/idVendor 0x2717
     write /config/usb_gadget/g1/idProduct 0xFF80
@@ -174,8 +174,8 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=rndis,none,adb && pro
     rm /config/usb_gadget/g1/configs/b.1/f3
     rm /config/usb_gadget/g1/configs/b.1/f4
     rm /config/usb_gadget/g1/configs/b.1/f5
-    write /config/usb_gadget/g1/idVendor 0x2717
-    write /config/usb_gadget/g1/idProduct 0xFF88
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
     rm /config/usb_gadget/g1/configs/b.1/f8
     write /config/usb_gadget/g1/idVendor 0x2717
     write /config/usb_gadget/g1/idProduct 0xFF88
