@@ -6,3 +6,6 @@ http://gerrit.aicp-rom.com/#/c/58660/
 
 android_frameworks_native:
 https://review.lineageos.org/#/c/203294/
+
+android_packages_apps_Settings
+https://review.lineageos.org/#/c/206403/
