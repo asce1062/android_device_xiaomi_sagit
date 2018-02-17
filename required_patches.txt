@@ -1,8 +1,5 @@
 android_hardware_interfaces:
 https://review.lineageos.org/#/c/200040/
 
-frameworks_opt_telephony:
-http://gerrit.aicp-rom.com/#/c/58660/
-
 android_frameworks_native:
 https://review.lineageos.org/#/c/203294/
