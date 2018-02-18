@@ -169,7 +169,7 @@ dalvik.vm.heaptargetutilization=0.75
 persist.nfc.smartcard.config=SIM1,eSE1
 ro.hardware.nfc_nci=nqx.default
 ro.nfc.port=I2C
-ro.se.type=eSE,HCE,UICC
+ro.se.type=HCE,UICC
 
 # Perf
 persist.sys.perf.debug=true
@@ -207,4 +207,3 @@ sys.usb.configfs=1
 
 # OTG support
 persist.sys.oem.otg_support=true
-
