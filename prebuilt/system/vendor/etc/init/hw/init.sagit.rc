@@ -103,28 +103,6 @@ on property:ro.boot.fingerprint=fpc
 on property:ro.boot.fingerprint=goodix
     setprop ro.hardware.fingerprint goodix
 
-   # Generate bt mac
-   start bt-mac-generator
-
-service bt-mac-generator /system/vendor/bin/bt-mac-generator
-    class main
-    user root
-    group root
-    oneshot
-    disabled
-
-on property:wc_transport.start_root=true
-    start hci_filter_root
-
-on property:wc_transport.start_root=false
-    stop hci_filter_root
-
-service hci_filter_root /system/vendor/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth oem_2950 system
-    disabled
-
 service readmac /system/vendor/bin/readmac
     class main
     user root

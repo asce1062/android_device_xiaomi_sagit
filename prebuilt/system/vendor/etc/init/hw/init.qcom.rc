@@ -557,7 +557,6 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-
 on property:persist.download_mode=1
     write /sys/module/msm_poweroff/parameters/download_mode 1
 
