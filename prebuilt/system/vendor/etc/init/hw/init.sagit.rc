@@ -122,7 +122,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950 system
+    group bluetooth diag system wakelock
     disabled
 
 service readmac /system/vendor/bin/readmac
