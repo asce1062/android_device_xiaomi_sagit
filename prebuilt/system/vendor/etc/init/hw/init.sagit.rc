@@ -1,7 +1,7 @@
 # Sagit related stuff
 
 on init
-    export LD_SHIM_LIBS /system/lib/libMiCameraHal.so|libshim_MiCamera.so
+    export LD_SHIM_LIBS /system/lib/libMiCameraHal.so|libMiCameraHal_shim.so
     # Goodix fingerprint
     chown system system /dev/goodix_fp
 
