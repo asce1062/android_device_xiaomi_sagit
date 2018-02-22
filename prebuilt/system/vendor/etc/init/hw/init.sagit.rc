@@ -4,9 +4,6 @@ on init
     # Goodix fingerprint
     chown system system /dev/goodix_fp
 
-    write /sys/devices/soc/c179000.i2c/i2c-5/5-0020/input/input1/reversed_keys 1
-    write /sys/devices/soc/c179000.i2c/i2c-5/5-0020/input/input7/reversed_keys 1
-
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
