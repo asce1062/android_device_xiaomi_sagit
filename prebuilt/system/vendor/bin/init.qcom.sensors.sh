@@ -51,9 +51,6 @@ start_sensors()
 
 	chcon -R u:object_r:sensors_persist_file:s0 /persist/sensors
 
-	mkdir -p /data/misc/sensors
-	chmod 0775 /data/misc/sensors
-
 	chown system:system /persist/PRSensorData.txt
 	chmod 0600 /persist/PRSensorData.txt
 	chcon u:object_r:sensors_persist_file:s0 /persist/PRSensorData.txt
