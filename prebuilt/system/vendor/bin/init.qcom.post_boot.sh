@@ -2512,20 +2512,6 @@ case "$target" in
 	echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
 	echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
 
-	# Setting b.L scheduler parameters
-	echo 1 > /proc/sys/kernel/sched_migration_fixup
-	echo 95 > /proc/sys/kernel/sched_upmigrate
-	echo 90 > /proc/sys/kernel/sched_downmigrate
-	echo 100 > /proc/sys/kernel/sched_group_upmigrate
-	echo 95 > /proc/sys/kernel/sched_group_downmigrate
-	echo 0 > /proc/sys/kernel/sched_select_prev_cpu_us
-	echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
-	echo 400000 > /proc/sys/kernel/sched_freq_dec_notify
-	echo 5 > /proc/sys/kernel/sched_spill_nr_run
-	echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
-        echo 1 > /proc/sys/kernel/sched_prefer_sync_wakee_to_waker
-	#start iop
-
         # disable thermal bcl hotplug to switch governor
         echo 0 > /sys/module/msm_thermal/core_control/enabled
 
