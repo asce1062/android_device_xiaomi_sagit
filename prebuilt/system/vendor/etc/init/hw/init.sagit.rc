@@ -128,5 +128,5 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
 service readmac /system/vendor/bin/readmac
     class main
     user root
-    group root oem_2950
+    group root oem_2901
     oneshot
