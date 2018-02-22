@@ -155,5 +155,5 @@ on property:ro.boot.fingerprint=goodix
 service readmac /system/vendor/bin/readmac
     class main
     user root
-    group root oem_2950
+    group root oem_2901
     oneshot
