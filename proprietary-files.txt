@@ -838,8 +838,9 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/libcsm_data.so
 vendor/lib/libcsm_data.so
 
-# NFC firmware
+# NFC
 vendor/firmware/libpn553_fw.so
+vendor/bin/nqnfcinfo
 
 # Perf
 vendor/etc/perf/perfboostsconfig.xml
