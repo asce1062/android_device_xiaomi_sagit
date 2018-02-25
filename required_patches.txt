@@ -1,5 +1,2 @@
-android_hardware_interfaces:
-https://review.lineageos.org/#/c/200040/
-
 android_frameworks_native:
 https://review.lineageos.org/#/c/203294/
