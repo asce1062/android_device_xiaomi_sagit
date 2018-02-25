@@ -432,10 +432,10 @@ service iop /system/vendor/bin/iop
     disabled
     socket iop seqpacket 0666 root system
 
-service qcomsysd /system/vendor/bin/qcom-system-daemon
-    class main
-    user root
-    group root diag
+#service qcomsysd /system/vendor/bin/qcom-system-daemon
+#    class main
+#    user root
+#    group root diag
 
 service ssr_setup /system/vendor/bin/ssr_setup
     oneshot
@@ -526,10 +526,10 @@ on property:bluetooth.startbtlogger=true
 on property:bluetooth.startbtlogger=false
     stop bt_logger
 
-service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
+#service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
+#    class core
+#    user root
+#    oneshot
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
@@ -813,17 +813,17 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
-    class main
-    user root
-    group root
-    oneshot
+#service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
+#    class main
+#    user root
+#    group root
+#    oneshot
 
-service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
-    user root
-    group root
-    disabled
-    oneshot
+#service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
 service wifi_ftmd /system/vendor/bin/wifi_ftmd
     user system
@@ -954,10 +954,10 @@ service sensor-sh /vendor/bin/init.qcom.sensors.sh
     user root
     oneshot
 
-service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
-    class late_start
-    user root
-    oneshot
+#service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
+#    class late_start
+#    user root
+#    oneshot
 
 service qcom-power /vendor/bin/init.qcom.power.sh
     class main
@@ -987,11 +987,11 @@ on property:sys.miui.user_authenticated=true
     start cnss_diag
     start tcpdump
 
-service qvop-daemon /vendor/bin/qvop-daemon
-    class late_start
-    user system
-    group system drmrpc
-    writepid /dev/cpuset/system-background/tasks
+#service qvop-daemon /vendor/bin/qvop-daemon
+#    class late_start
+#    user system
+#    group system drmrpc
+#    writepid /dev/cpuset/system-background/tasks
 
 service atfwd /vendor/bin/ATFWD-daemon
     class late_start
@@ -1148,10 +1148,10 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
     user system
     group system
 
-service esepmdaemon /system/vendor/bin/esepmdaemon
-    class core
-    user system
-    group nfc
+#service esepmdaemon /system/vendor/bin/esepmdaemon
+#    class core
+#    user system
+#    group nfc
 
 on charger
     wait /dev/block/bootdevice/by-name/system
