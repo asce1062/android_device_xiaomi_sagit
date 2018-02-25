@@ -160,7 +160,6 @@ on boot
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
-    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
 
 # access permission for Speaker SmartPA
     chmod 0666 /dev/i2c-10
