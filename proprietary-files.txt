@@ -843,6 +843,7 @@ vendor/firmware/libpn553_fw.so
 vendor/bin/nqnfcinfo
 
 # Perf
+vendor/bin/energy-awareness
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/perf-profile0.conf
 vendor/etc/perf/perf-profile1.conf
