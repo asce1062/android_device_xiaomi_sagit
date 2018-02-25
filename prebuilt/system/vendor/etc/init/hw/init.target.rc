@@ -166,10 +166,10 @@ on boot
     chmod 0777 /dev/elliptic0
     chmod 0777 /dev/elliptic1
 #install video modules
-   insmod /system/lib/modules/msm-vidc-vmem.ko
-   insmod /system/lib/modules/msm-vidc.ko
-   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
-   insmod /system/lib/modules/msm-vidc-table-gov.ko
+#   insmod /system/lib/modules/msm-vidc-vmem.ko
+#   insmod /system/lib/modules/msm-vidc.ko
+#   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
+#   insmod /system/lib/modules/msm-vidc-table-gov.ko
 
    # Generate bt mac
    start bt-mac-generator
@@ -529,26 +529,26 @@ service qvrd /system/bin/qvrservice
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
 
-service nv_mac /vendor/bin/nv_mac
-    class main
-    user root
-    group net_raw
-    oneshot
+#service nv_mac /vendor/bin/nv_mac
+#    class main
+#    user root
+#    group net_raw
+#    oneshot
 
 service panel-info-sh /system/vendor/bin/init.panel_info.sh
     class core
     user root
     oneshot
 
-service leds-sh /system/vendor/bin/init.leds.sh
-    class core
-    user root
-    oneshot
+#service leds-sh /system/vendor/bin/init.leds.sh
+#    class core
+#    user root
+#    oneshot
 
-service display_count /system/vendor/bin/display_count
-    class late_start
-    user root
-    group root
+#service display_count /system/vendor/bin/display_count
+#    class late_start
+#    user root
+#    group root
 
 on property:audio.speaker.id=*
    start audio_info
