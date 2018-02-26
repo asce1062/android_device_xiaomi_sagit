@@ -202,6 +202,12 @@ service bt-mac-generator /system/vendor/bin/bt-mac-generator
     disabled
 
 on charger
+    # Enable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
+
     write /sys/class/input/input0/enabled 0
     write /sys/class/input/input1/enabled 0
     write /sys/class/input/input2/enabled 0

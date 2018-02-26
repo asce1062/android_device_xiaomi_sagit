@@ -1,6 +1,12 @@
 # Sagit related stuff
 
 on init
+    # Disable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 0
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 0
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 0
+    write /sys/module/lpm_levels/parameters/sleep_disabled Y
+
     # Goodix fingerprint
     chown system system /dev/goodix_fp
 
@@ -81,6 +87,12 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/online 1
     # configure min freq
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 518400
+
+    # Enable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
+    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
 
 on boot
    # in FBE mode, /data is here
