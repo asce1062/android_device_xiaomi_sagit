@@ -77,6 +77,15 @@ on post-fs-data
     mkdir /data/misc/goodix 0770 system system
     mkdir /persist/fpc 0770 system system
 
+on late-fs
+    # Enable boot time fs tuning (ro like system is on sda, rw like userdata is on sde)
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nr_requests 256
+    write /sys/block/sda/queue/read_ahead_kb 2048
+
 on property:sys.boot_completed=1
     # online little cluster
     write /sys/devices/system/cpu/cpu0/online 1
@@ -87,6 +96,14 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/online 1
     # configure min freq
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 518400
+
+    # Disable boot time fs tuning
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sde/queue/iostats 1
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/read_ahead_kb 1024
 
     # Enable UFS powersaving
     write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
