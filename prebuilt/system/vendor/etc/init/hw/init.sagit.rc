@@ -131,6 +131,10 @@ on boot
    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
    chmod 0600 /data/misc/fpc/calibration_image.pndat
 
+    # Goodix /sys
+    chmod 0600 /sys/devices/soc/soc:fingerprint_goodix/proximity_state
+    chown system system /sys/devices/soc/soc:fingerprint_goodix/proximity_state
+
     # RGB lights
     chown system system /sys/class/leds/white/brightness
     chown system system /sys/class/leds/white/pause_lo
