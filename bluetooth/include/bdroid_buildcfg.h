@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
  * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +19,12 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Xiaomi MI 6"
-#define BLUETOOTH_QTI_SW TRUE
-// Disables read remote device feature
-#define BTM_WBS_INCLUDED TRUE
-#define BTIF_HF_WBS_PREFERRED TRUE
+#define BTM_DEF_LOCAL_NAME    "Xiaomi MI 6"
 
-#define BLE_VND_INCLUDED   TRUE
-// skips conn update at conn completion
-#define BT_CLEAN_TURN_ON_DISABLED 1
+#define BTM_WBS_INCLUDED      TRUE
+#define BTIF_HF_WBS_PREFERRED TRUE
+#define BLE_VND_INCLUDED      TRUE
+#define MAX_ACL_CONNECTIONS   16
+#define MAX_L2CAP_CHANNELS    16
+
 #endif
