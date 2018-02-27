@@ -4,7 +4,7 @@
 
 # Devices
 /dev/elliptic(.*)?                    u:object_r:sound_device:s0
-/dev/pn553                            u:object_r:nfc_device:s0
+/dev/nq-nci                            u:object_r:nfc_device:s0
 /dev/sysmatdrv                        u:object_r:sysmatdrv_device:s0
 /dev/socket/thermal-switch-socket     u:object_r:thermal_switch_device:s0
 
