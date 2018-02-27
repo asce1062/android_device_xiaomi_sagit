@@ -160,6 +160,10 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     libqdMetaData.system
 
+# Pocket mode
+PRODUCT_PACKAGES += \
+    XiaomiPocketMode
+
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     fingerprint.msm8998
