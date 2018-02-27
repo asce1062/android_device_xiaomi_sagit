@@ -111,8 +111,6 @@ on post-fs-data
 on boot
     start rmt_storage
     start rfs_access
-    chmod 0666 /dev/pn553
-    chown nfc nfc /dev/pn553
 
    # Add a cpuset for the camera daemon
    # We want all cores for camera
