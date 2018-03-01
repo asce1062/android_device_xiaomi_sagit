@@ -188,3 +188,6 @@ persist.sys.usb.config.extra=none
 
 # OTG support
 persist.sys.oem.otg_support=true
+
+# Time daemon
+persist.delta_time.enable=true
