@@ -145,6 +145,7 @@ persist.mm.enable.prefetch=true
 persist.vendor.qti.telephony.vt_cam_interface=1
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,org.cyanogenmod.snap
 vidc.enc.dcvs.extra-buff-count=2
+persist.dualcam.lpm.enable=1
 
 # NFC
 persist.nfc.smartcard.config=SIM1,eSE1
