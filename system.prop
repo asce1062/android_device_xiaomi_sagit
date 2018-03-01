@@ -184,6 +184,7 @@ persist.sys.wfd.virtual=0
 ro.wlan.mimo=1
 
 # USB
+persist.sys.usb.config.extra=none
 
 # OTG support
 persist.sys.oem.otg_support=true
