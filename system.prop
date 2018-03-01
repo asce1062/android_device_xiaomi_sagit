@@ -187,7 +187,3 @@ ro.wlan.mimo=1
 
 # OTG support
 persist.sys.oem.otg_support=true
-
-# Fling Velocity
-ro.min.fling_velocity=160
-ro.max.fling_velocity=20000
