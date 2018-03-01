@@ -191,3 +191,6 @@ persist.sys.oem.otg_support=true
 
 # Time daemon
 persist.delta_time.enable=true
+
+# Voice assistant
+ro.opa.eligible_device=true
