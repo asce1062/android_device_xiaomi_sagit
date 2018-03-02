@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+# Miui camera
+$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera_prebuild/MiuiCamera-vendor.mk)
+
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -36,6 +40,18 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+
+# Camera
+PRODUCT_PACKAGES += \
+    MiuiCamera \
+    libMiCameraHal_shim
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/camera/camera_config.xml:system/etc/camera/camera_config.xml \
+    $(LOCAL_PATH)/configs/camera/imx268_chromatix.xml:system/etc/camera/imx268_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/imx386_semco_chromatix.xml:system/etc/camera/imx386_semco_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/s5k3m3_semco_chromatix.xml:system/etc/camera/s5k3m3_semco_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/sagit_imx268_liteon_chromatix.xml:system/etc/camera/sagit_imx268_liteon_chromatix.xml
 
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/sagit/sagit-vendor.mk)
