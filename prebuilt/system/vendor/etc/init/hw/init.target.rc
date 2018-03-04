@@ -70,8 +70,6 @@ on post-fs
 
     write /dev/ipa 1
 
-    insmod /vendor/lib/modules/exfat.ko
-
 # OTG support
 on property:persist.sys.oem.otg_support=true
     write /sys/class/power_supply/usb/otg_switch 1
