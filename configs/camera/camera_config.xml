@@ -93,7 +93,6 @@ LensInfo : Information of the lens present in the module.
 -->
 
 <CameraConfigurationRoot>
-
   <CameraModuleConfig>
     <CameraId>0</CameraId>
     <SensorName>imx386_semco</SensorName>
@@ -119,10 +118,8 @@ LensInfo : Information of the lens present in the module.
       <HorizontalViewAngle>65.5</HorizontalViewAngle>
       <VerticalViewAngle>51.5</VerticalViewAngle>
       <MinFocusDistance>0.09</MinFocusDistance>
-      <LensType>WIDE</LensType>
     </LensInfo>
   </CameraModuleConfig>
-
   <CameraModuleConfig>
     <CameraId>1</CameraId>
     <SensorName>s5k3m3_semco</SensorName>
@@ -147,10 +144,8 @@ LensInfo : Information of the lens present in the module.
       <HorizontalViewAngle>38.3</HorizontalViewAngle>
       <VerticalViewAngle>29.2</VerticalViewAngle>
       <MinFocusDistance>0.5</MinFocusDistance>
-      <LensType>TELE</LensType>
     </LensInfo>
   </CameraModuleConfig>
-
   <CameraModuleConfig>
     <CameraId>2</CameraId>
     <SensorName>imx268</SensorName>
@@ -175,7 +170,6 @@ LensInfo : Information of the lens present in the module.
       <MinFocusDistance>0.35</MinFocusDistance>
     </LensInfo>
   </CameraModuleConfig>
-
   <CameraModuleConfig>
     <CameraId>2</CameraId>
     <SensorName>sagit_imx268_liteon</SensorName>
@@ -200,5 +194,4 @@ LensInfo : Information of the lens present in the module.
       <MinFocusDistance>0.35</MinFocusDistance>
     </LensInfo>
   </CameraModuleConfig>
-
 </CameraConfigurationRoot>
