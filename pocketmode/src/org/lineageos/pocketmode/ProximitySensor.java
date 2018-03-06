@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2016 The CyanogenMod Project
- *               2017 The LineageOS Project
  * Copyright (c) 2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.pocketmode;
+package org.lineageos.pocketmode;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -25,7 +24,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-import com.cyanogenmod.pocketmode.utils.FileUtils;
+import org.lineageos.internal.util.FileUtils;
 
 public class ProximitySensor implements SensorEventListener {
 
@@ -43,29 +42,44 @@ public class ProximitySensor implements SensorEventListener {
     private Context mContext;
 
     public ProximitySensor(Context context) {
+        boolean found = false;
         mContext = context;
         mSensorManager = (SensorManager)
                 mContext.getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
-        if (android.os.Build.DEVICE.equals("sagit")) {
+        if (FileUtils.fileExists(GOODIX_FILE)) {
             FPC_FILE = GOODIX_FILE;
-        } else {
+            found = true;
+        } else if (FileUtils.fileExists(FPC1020_FILE)) {
             FPC_FILE = FPC1020_FILE;
+            found = true;
+        } else {
+            Log.e(TAG, "No proximity state file found!");
+            FPC_FILE = GOODIX_FILE;
+        }
+
+        if (found) {
+            if (DEBUG) Log.d(TAG, "Using proximity state from " + FPC_FILE);
         }
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean isNear = event.values[0] < mSensor.getMaximumRange();
-        if (FileUtils.isFileWritable(GOODIX_FILE)) {
-            FileUtils.writeLine(GOODIX_FILE, isNear ? "1" : "0");
-        }
+        setFPProximityState(event.values[0] < mSensor.getMaximumRange());
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         /* Empty */
+    }
+
+    private void setFPProximityState(boolean isNear) {
+        if (FileUtils.isFileWritable(FPC_FILE)) {
+            FileUtils.writeLine(FPC_FILE, isNear ? "1" : "0");
+        } else {
+            Log.e(TAG, "Proximity state file " + FPC_FILE + " is not writable!");
+        }
     }
 
     protected void enable() {
@@ -77,5 +91,7 @@ public class ProximitySensor implements SensorEventListener {
     protected void disable() {
         if (DEBUG) Log.d(TAG, "Disabling");
         mSensorManager.unregisterListener(this, mSensor);
+        // Ensure FP is left enabled
+        setFPProximityState(/* isNear */ false);
     }
 }
