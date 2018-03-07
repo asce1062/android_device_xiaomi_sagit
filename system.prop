@@ -1,4 +1,11 @@
 # Audio
+persist.audio.calfile0=/system/vendor/etc/acdbdata/Forte/Forte_Bluetooth_cal.acdb
+persist.audio.calfile1=/system/vendor/etc/acdbdata/Forte/Forte_General_cal.acdb
+persist.audio.calfile2=/system/vendor/etc/acdbdata/Forte/Forte_Global_cal.acdb
+persist.audio.calfile3=/system/vendor/etc/acdbdata/Forte/Forte_Handset_cal.acdb
+persist.audio.calfile4=/system/vendor/etc/acdbdata/Forte/Forte_Hdmi_cal.acdb
+persist.audio.calfile5=/system/vendor/etc/acdbdata/Forte/Forte_Headset_cal.acdb
+persist.audio.calfile6=/system/vendor/etc/acdbdata/Forte/Forte_Speaker_cal.acdb
 audio.adm.buffering.ms=6
 af.fast_track_multiplier=2
 vendor.audio_hal.period_size=192
@@ -77,21 +84,11 @@ debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
-ro.hwui.drop_shadow_cache_size=7
-ro.hwui.gradient_cache_size=1
-ro.hwui.layer_cache_size=64
-ro.hwui.path_cache_size=39
-ro.hwui.r_buffer_cache_size=12
-ro.hwui.text_large_cache_height=2048
-ro.hwui.text_large_cache_width=3072
-ro.hwui.text_small_cache_height=2048
-ro.hwui.text_small_cache_width=2048
-ro.hwui.texture_cache_flushrate=0.4
-ro.hwui.texture_cache_size=96
 ro.opengles.version=196610
 ro.sf.lcd_density=480
 sdm.perf_hint_window=50
 vendor.display.enable_default_color_mode=1
+debug.hwui.renderer=skiagl
 
 # DPM
 persist.vendor.dpm.feature=0
@@ -148,25 +145,22 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
+persist.mm.enable.prefetch=true
+
+# Camera
 persist.camera.set.afd=4
 persist.camera.xm.green.b=0.96
 persist.camera.xm.green.r=0.97
-persist.mm.enable.prefetch=true
 persist.vendor.qti.telephony.vt_cam_interface=1
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,org.cyanogenmod.snap
-vidc.enc.dcvs.extra-buff-count=2
+persist.dualcam.lpm.enable=1
 
-# Memory
-dalvik.vm.heapgrowthlimit=256m
-dalvik.vm.heapmaxfree=8m
-dalvik.vm.heapminfree=4m
-dalvik.vm.heapsize=512m
-dalvik.vm.heapstartsize=16m
-dalvik.vm.heaptargetutilization=0.75
+# Additional buffers shared between Camera and Video
+vidc.enc.dcvs.extra-buff-count=2
 
 # NFC
 persist.nfc.smartcard.config=SIM1,eSE1
-ro.hardware.nfc_nci=nqx.default
+ro.hardware.nfc_nci=msm8998
 ro.nfc.port=I2C
 ro.se.type=HCE,UICC
 
@@ -202,7 +196,13 @@ persist.sys.wfd.virtual=0
 ro.wlan.mimo=1
 
 # USB
-sys.usb.configfs=1
+persist.sys.usb.config.extra=none
 
 # OTG support
 persist.sys.oem.otg_support=true
+
+# Time daemon
+persist.delta_time.enable=true
+
+# Voice assistant
+ro.opa.eligible_device=true

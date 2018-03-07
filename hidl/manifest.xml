@@ -46,7 +46,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
@@ -192,7 +192,7 @@
     <hal format="hidl">
         <name>vendor.lineage.power</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ILineagePower</name>
             <instance>default</instance>
@@ -419,7 +419,7 @@
     <hal format="hidl">
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>

@@ -3,6 +3,8 @@ $(call inherit-product, device/xiaomi/sagit/full_sagit.mk)
 # Inherit some common RR stuff.
 $(call inherit-product, vendor/rr/config/common_full_phone.mk)
 
+WITH_SU := false
+
 PRODUCT_NAME := rr_sagit
 PRODUCT_DEVICE := sagit
 PRODUCT_BRAND := Xiaomi
@@ -17,4 +19,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="sagit" \
     BUILD_FINGERPRINT="Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.2.3.0.OCAMIEK:user/release-keys" \
     PRIVATE_BUILD_DESC="sagit-user 8.0.0 OPR1.170623.027 V9.2.3.0.OCAMIEK release-keys"
-
