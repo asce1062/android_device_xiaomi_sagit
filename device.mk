@@ -16,6 +16,7 @@
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/xiaomi/sagit/sagit-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera_prebuild/MiuiCamera-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -131,7 +132,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
+    MiuiCamera \
     libshim_MiCamera \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
