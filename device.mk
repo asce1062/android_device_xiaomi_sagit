@@ -317,7 +317,7 @@ PRODUCT_COPY_FILES += \
 
 # Privapp Whitelist and Low power Whitelist
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 # QMI
@@ -403,7 +403,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-#USB HAL
+# USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
