@@ -186,7 +186,7 @@ on property:ro.boot.fingerprint=fpc
 on property:ro.boot.fingerprint=goodix
     setprop ro.hardware.fingerprint goodix
 
-service readmac /system/vendor/bin/readmac
+service readmac /vendor/bin/readmac
     class main
     user root
     group root oem_2901

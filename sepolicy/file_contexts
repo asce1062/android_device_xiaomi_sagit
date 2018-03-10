@@ -1,6 +1,6 @@
 # executables
-/(vendor|system/vendor)/bin/readmac   u:object_r:readmac_exec:s0
-/(vendor|system/vendor)/bin/bt-mac-generator                    u:object_r:bt_mac_generator_exec:s0
+/vendor/bin/readmac   u:object_r:readmac_exec:s0
+/vendor/bin/bt-mac-generator                    u:object_r:bt_mac_generator_exec:s0
 
 # Devices
 /dev/elliptic(.*)?                    u:object_r:sound_device:s0
