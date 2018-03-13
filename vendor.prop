@@ -19,7 +19,6 @@ vendor.audio.offload.buffer.size.kb=32
 audio.offload.video=true
 vendor.audio.offload.track.enable=false
 audio.deep_buffer.media=true
-vendor.voice.path.for.pcm.voip=false
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.dolby.ds2.enabled=false
 vendor.audio.dolby.ds2.hardbypass=false
@@ -35,26 +34,12 @@ persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
 vendor.audio.hw.aac.encoder=false
-persist.sys.button_jack_profile=volume
-persist.sys.button_jack_switch=0
-vendor.fm.a2dp.conc.disabled=true
 vendor.audio.noisy.broadcast.delay=600
 vendor.audio.offload.pstimeout.secs=3
-ro.audio.nojack=true
-audio.adm.buffering.ms=6
-ro.audio.soundfx.usb=true
 persist.audio.dirac.speaker=true
 persist.audio.speaker.dualmode=true
 ro.config.vc_call_vol_steps=11
 audio.offload.min.duration.secs=15
-qcom.hw.aac.encoder=true
-persist.vendor.dpm.feature=1
-persist.vendor.dpm.nsrm.bkg.evt=3955
-persist.vendor.overlay.izat.optin=rro
-persist.vendor.radio.custom_ecc=1
-persist.vendor.radio.force_on_dc=true
-persist.vendor.radio.sib16_support=1
-vendor.voice.path.for.pcm.voip=false
 
 # Battery
 ro.cutoff_voltage_mv=3400
@@ -62,9 +47,19 @@ ro.cutoff_voltage_mv=3400
 # Bluetooth
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=cherokee
+ro.bluetooth.dun=true
 ro.bluetooth.a4wp=false
 ro.bluetooth.emb_wp_mode=false
+ro.bluetooth.hfp.ver=1.6
+ro.bluetooth.sap=true
 ro.bluetooth.wipower=false
+ro.qualcomm.bluetooth.ftp=true
+ro.qualcomm.bluetooth.hfp=true
+ro.qualcomm.bluetooth.hsp=true
+ro.qualcomm.bluetooth.map=true
+ro.qualcomm.bluetooth.nap=true
+ro.qualcomm.bluetooth.opp=true
+ro.qualcomm.bluetooth.pbap=true
 
 # CABL
 ro.qualcomm.cabl=0
@@ -77,20 +72,14 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Display
 debug.gralloc.enable_fb_ubwc=1
-debug.gralloc.gfx_ubwc_disable=0
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
-persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
 ro.opengles.version=196610
 ro.sf.lcd_density=480
-sdm.perf_hint_window=50
 vendor.display.enable_default_color_mode=1
-
-# DPM
-persist.vendor.dpm.feature=0
 
 # Radio
 persist.data.df.agg.dl_pkt=10
@@ -111,10 +100,10 @@ persist.radio.redir_party_num=1
 persist.radio.report_codec=1
 persist.radio.VT_HYBRID_ENABLE=1
 persist.rmnet.data.enable=true
-persist.sys.strictmode.disable=true
-persist.timed.enable=true
+persist.vendor.dpm.feature=0
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.force_on_dc=true
+persist.vendor.radio.redir_party_num=1
 persist.vendor.radio.sib16_support=1
 ril.subscription.types=RUIM
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
@@ -122,6 +111,7 @@ ro.telephony.default_cdma_sub=0
 ro.telephony.default_network=22,22
 ro.use_data_netmgrd=true
 telephony.lteOnCdmaDevice=1
+vendor.voice.path.for.pcm.voip=true
 
 # Debug Options
 persist.dbg.ims_volte_enable=1 
@@ -137,11 +127,13 @@ persist.radio.calls.on.ims=1
 
 # Media
 media.aac_51_output_enabled=true
+media.input.fd.disable=true
 media.stagefright.enable-aac=true
 media.stagefright.enable-http=true
 media.stagefright.enable-player=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
+mm.enable.qcom_parser=1048575
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 persist.mm.enable.prefetch=true
@@ -164,12 +156,13 @@ ro.nfc.port=I2C
 ro.se.type=HCE,UICC
 
 # Perf
-persist.sys.perf.debug=true
 ro.vendor.at_library=libqti-at.so
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.qti.core_ctl_max_cpu=4
 ro.vendor.qti.core_ctl_min_cpu=2
 ro.vendor.qti.sys.fw.bg_apps_limit=60
+sdm.perf_hint_window=50
+sdm.debug.disable_skip_validate=1
 
 # Sensors
 persist.sys.sensors.cfos=false
@@ -192,7 +185,10 @@ persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 
 # Wlan
+ro.wlan.chip=39xx
 ro.wlan.mimo=1
+ro.wlan.vendor=qcom
+wifi.interface=wlan0
 
 # USB
 persist.sys.usb.config.extra=none
