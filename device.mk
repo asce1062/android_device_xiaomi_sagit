@@ -17,7 +17,6 @@
 # Miui camera
 $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera_prebuild/MiuiCamera-vendor.mk)
 
-
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -36,6 +35,11 @@ PRODUCT_COPY_FILES += \
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl
+
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    android.hardware.ir@1.0-service
 
 # NFC
 PRODUCT_COPY_FILES += \
