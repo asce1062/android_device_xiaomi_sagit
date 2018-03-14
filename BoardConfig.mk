@@ -264,9 +264,6 @@ include device/qcom/sepolicy/sepolicy.mk
 
 # BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-# SHIMS
-TARGET_LD_SHIM_LIBS := /vendor/lib/libMiCameraHal.so|libshim_MiCamera.so
-
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_sagit
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sagit
