@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/rr.mk
+    $(LOCAL_DIR)/full_sagit.mk
