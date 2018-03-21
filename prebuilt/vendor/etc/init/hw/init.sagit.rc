@@ -14,6 +14,7 @@ on init
     # Goodix fingerprint
     chown system system /dev/goodix_fp
 
+    # Set up schedtune
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
