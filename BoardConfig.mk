@@ -146,9 +146,16 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # CNE and DPM
 BOARD_USES_QCNE := true
 
-# Enable dexpreopt to speed boot time
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT_PIC := true
+    ifneq ($(TARGET_BUILD_VARIANT),user)
+      # Retain classes.dex in APK's for non-user builds
+      DEX_PREOPT_DEFAULT := nostripping
+    endif
+  endif
+endif
 
 # Display
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
