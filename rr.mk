@@ -12,16 +12,6 @@ PRODUCT_MANUFACTURER := Xiaomi
 # Google client ID.
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rr.version=RR-O-v6.0.0-20180318-sagit-Unofficial \
-    ro.rr.releasetype=Unofficial \
-    ro.rr.build.version=. \
-    ro.modversion=RR-O-v6.0.0-20180318-sagit-Unofficial \
-    rr.build.type=Unofficial \
-    rr.ota.version=20180318 \
-    ro.rr.tag=android-8.1.0_r15 \
-    ro.rr.display.version=RR-O-v6.0.0-20180318-sagit-Unofficial
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="sagit" \
     PRODUCT_NAME="sagit" \
