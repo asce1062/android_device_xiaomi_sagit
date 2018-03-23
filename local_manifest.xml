@@ -7,7 +7,7 @@
     <!-- Sagit's prebuilt camera -->
     <project path="vendor/xiaomi/MiuiCamera_prebuild" name="Verevka/vendor_xiaomi_MiuiCamera_prebuild" remote="github" revision="los-15.1" />
     <!-- Sagit's Kernel -->
-    <project path="kernel/xiaomi/msm8998" name="MoKee/android_kernel_xiaomi_msm8998" remote="github" revision="mko-mr1" />
+    <project path="kernel/xiaomi/msm8998" name="ShevT/kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1" />
     <!-- Linaro toolchain -->
     <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linaro-5.5.0-2017.10" name="ShevT/gcc-linaro" remote="github" revision="gcc-5.5.0-aarch64" />
     <!-- Devicesettings -->
