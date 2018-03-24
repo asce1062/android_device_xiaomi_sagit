@@ -67,7 +67,7 @@ ro.qualcomm.cabl=0
 # CNE
 persist.cne.feature=1
 
-# FRP
+# Factory reset partition
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Display
