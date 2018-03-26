@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
-<!--Repositories to replace-->
-  <remove-project name="LineageOS/android_hardware_qcom_camera" />
+    <!--Repositories to replace-->
+    <remove-project name="LineageOS/android_hardware_qcom_camera" />
 
-  <project path="device/qcom/common" name="lineageos/android_device_qcom_common" remote="github" revision="staging/lineage-15.1" />
-  <project path="packages/resources/devicesettings" name="lineageos/android_packages_resources_devicesettings" remote="github" revision="staging/lineage-15.1" />
-  <project path="hardware/lineage/livedisplay" name="lineageos/android_hardware_lineage_livedisplay" remote="github" revision="staging/lineage-15.1" />
+    <project path="device/qcom/common" name="lineageos/android_device_qcom_common" remote="github" revision="staging/lineage-15.1" />
+    <project path="packages/resources/devicesettings" name="lineageos/android_packages_resources_devicesettings" remote="github" revision="staging/lineage-15.1" />
+    <project path="hardware/lineage/livedisplay" name="lineageos/android_hardware_lineage_livedisplay" remote="github" revision="staging/lineage-15.1" />
+
+    <!-- OpenGapps -->
+    <!-- https://github.com/opengapps/aosp_build/blob/master/README.md -->
+    <remote name="opengapps" fetch="https://github.com/opengapps/"  />
+    <project path="vendor/opengapps/build" name="aosp_build" revision="master" remote="opengapps" />
+    <project path="vendor/opengapps/sources/all" name="all" clone-depth="1" revision="master" remote="opengapps" />
+    <!-- arm64 depends on arm -->
+    <project path="vendor/opengapps/sources/arm" name="arm" clone-depth="1" revision="master" remote="opengapps" />
+    <project path="vendor/opengapps/sources/arm64" name="arm64" clone-depth="1" revision="master" remote="opengapps" />
 
 </manifest>
