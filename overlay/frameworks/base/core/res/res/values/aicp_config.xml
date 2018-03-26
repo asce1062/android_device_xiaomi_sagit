@@ -16,6 +16,6 @@
 
 <resources>
     <!-- Button backlight -->
-    <integer name="config_buttonBrightnessSettingDefault">160</integer>
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+    <integer name="config_button_brightness_default">160</integer>
+    <bool name="config_button_brightness_support">true</bool>
 </resources>
