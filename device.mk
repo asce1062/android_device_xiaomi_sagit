@@ -366,3 +366,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=8m
+
+# GApps
+GAPPS_VARIANT := pico
+$(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
