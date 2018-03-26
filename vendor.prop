@@ -67,9 +67,6 @@ ro.qualcomm.cabl=0
 # CNE
 persist.cne.feature=1
 
-# FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
 # Display
 debug.gralloc.enable_fb_ubwc=1
 debug.sf.enable_hwc_vds=1

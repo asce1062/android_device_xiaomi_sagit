@@ -1,8 +1,8 @@
-ro.rr.version=RR-O-v6.0.0-20180323-sagit-Unofficial
+ro.rr.version=RR-O-v6.0.0-20180326-sagit-Unofficial
 ro.rr.releasetype=Unofficial
 ro.rr.build.version=.
-ro.modversion=RR-O-v6.0.0-20180323-sagit-Unofficial
+ro.modversion=RR-O-v6.0.0-20180326-sagit-Unofficial
 rr.build.type=Unofficial
-rr.ota.version=20180323
+rr.ota.version=20180326
 ro.rr.tag=android-8.1.0_r15
-ro.rr.display.version=RR-O-v6.0.0-20180323-sagit-Unofficial
+ro.rr.display.version=RR-O-v6.0.0-20180326-sagit-Unofficial
