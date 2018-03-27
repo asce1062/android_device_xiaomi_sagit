@@ -1,0 +1,15 @@
+Add support 192000 flac
+
+project frameworks/av/
+diff --git a/frameworks/av/media/libstagefright/FLACExtractor.cpp b/frameworks/av/media/libstagefright/FLACExtractor.cpp
+index 1b88e5d25..c69d63325 100644
+--- a/frameworks/av/media/libstagefright/FLACExtractor.cpp
++++ b/frameworks/av/media/libstagefright/FLACExtractor.cpp
+@@ -585,6 +585,7 @@ status_t FLACParser::init()
+         case 48000:
+         case 88200:
+         case 96000:
++        case 192000:
+             break;
+         default:
+             ALOGE("unsupported sample rate %u", getSampleRate());
