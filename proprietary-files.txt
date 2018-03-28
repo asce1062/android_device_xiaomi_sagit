@@ -1023,7 +1023,7 @@ vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 
-# Postprocessing - from cheeseburger - OPM1.171019.011
+# Postprocessing
 vendor/etc/permissions/com.qti.snapdragon.sdk.display.xml|12d9879c5a439c5a31628eb8e925ef52baf9beb2
 vendor/framework/com.qti.snapdragon.sdk.display.jar|3b29d29f3df28a28213b6d62aca3e05359c349aa
 -vendor/app/colorservice/colorservice.apk
