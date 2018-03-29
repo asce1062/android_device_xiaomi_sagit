@@ -1,0 +1,29 @@
+From c54cffadac41274137ca3ab80240596adbaae82a Mon Sep 17 00:00:00 2001
+From: ShevT <evgeny.shishkov@gmail.com>
+Date: Tue, 27 Mar 2018 07:26:44 +0300
+Subject: [PATCH] LineageParts: Fix lit battery light after off/on battery
+ notification
+
+Do not need to reset the color for non-color LEDs.
+
+TEST:
+For example, on the Xiaomi MI6 uses a single-color (white) LED.
+When this setting is turned off, the LED goes out.
+When this setting is enabled, the LED no longer lights up.
+In the database records zero color values.
+
+Change-Id: Ie35c1fc59e88c74f3bf2ccd03816bb47630f72d0
+
+project packages/apps/LineageParts/
+diff --git a/packages/apps/LineageParts/src/org/lineageos/lineageparts/notificationlight/BatteryLightSettings.java b/packages/apps/LineageParts/src/org/lineageos/lineageparts/notificationlight/BatteryLightSettings.java
+index a9d3c3a..238cc9c 100644
+--- a/packages/apps/LineageParts/src/org/lineageos/lineageparts/notificationlight/BatteryLightSettings.java
++++ b/packages/apps/LineageParts/src/org/lineageos/lineageparts/notificationlight/BatteryLightSettings.java
+@@ -153,7 +153,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
+                     prefSet.findPreference(BLEND_COLOR_REVERSE_PREF);
+         } else {
+             prefSet.removePreference(prefSet.findPreference(COLORS_SECTION));
+-            resetColors();
+         }
+
+         // Remove battery LED brightness controls if we can't support them.
