@@ -17,8 +17,8 @@
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/xiaomi/sagit/sagit-vendor.mk)
 
-# call the prebuilt camera setup
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera-prebuild/MiuiCamera-vendor.mk)
+# call xiaomi custom
+$(call inherit-product-if-exists, vendor/xiaomi/custom/XiaomiCustom.mk)
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -4,10 +4,10 @@
     <project path="device/xiaomi/sagit" name="asce1062/android_device_xiaomi_sagit" remote="github" revision="rr-o-blankaf" />
     <!-- Sagit vendor files -->
     <project path="vendor/xiaomi/sagit" name="asce1062/proprietary_vendor_xiaomi_sagit" remote="github" revision="rr-o-blankaf" />
-    <!-- Sagit prebuilt camera -->
-    <project path="vendor/xiaomi/miuicamera-prebuild" name="asce1062/proprietary_vendor_xiaomi_miuicamera-prebuild" remote="github" revision="rr-o" />
+    <!-- Sagit custom -->
+    <project path="vendor/xiaomi/custom" name="asce1062/proprietary_vendor_xiaomi_custom" remote="github" revision="rr-o-custom" />
     <!-- Sagit Kernel -->
-    <project path="kernel/xiaomi/msm8998" name="blankaf/kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1" />
+    <project path="kernel/xiaomi/msm8998" name="blankaf/android_kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1" />
     <!-- Linaro toolchain -->
     <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linaro-5.5.0-2017.10" name="asce1062/gcc-linaro" remote="github" revision="gcc-linaro-5.5.0-2017.10" />
     <!-- Devicesettings -->
