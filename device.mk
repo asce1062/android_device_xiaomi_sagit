@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# Miui camera
-$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera_prebuild/MiuiCamera-vendor.mk)
+# call xiaomi custom
+$(call inherit-product-if-exists, vendor/xiaomi/custom/XiaomiCustom.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
