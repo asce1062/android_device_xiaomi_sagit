@@ -4,11 +4,14 @@
     <project path="device/xiaomi/sagit" name="asce1062/android_device_xiaomi_sagit" remote="github" revision="rr-o-rebase" />
     <project path="vendor/xiaomi/sagit" name="asce1062/proprietary_vendor_xiaomi_sagit" remote="github" revision="rr-o-rebase" />
     <!-- msm8998-common's config -->
-    <project path="device/xiaomi/msm8998-common" name="asce1062/device_xiaomi_msm8998-common" remote="github" revision="master" />
-    <project path="vendor/xiaomi/msm8998-common" name="asce1062/proprietary_vendor_xiaomi_msm8998-common" remote="github" revision="master" />
-    <!-- Sagit's prebuilt camera -->
-    <project path="vendor/xiaomi/MiuiCamera_prebuild" name="asce1062/proprietary_vendor_xiaomi_MiuiCamera_prebuild" remote="github" revision="master" />
+    <project path="device/xiaomi/msm8998-common" name="asce1062/device_xiaomi_msm8998-common" remote="github" revision="rr-o-rebase" />
+    <project path="vendor/xiaomi/msm8998-common" name="asce1062/proprietary_vendor_xiaomi_msm8998-common" remote="github" revision="rr-o-rebase" />
+    <!-- Sagit Xiaomi Common-->
+    <project path="vendor/xiaomi/custom" name="asce1062/proprietary_vendor_xiaomi_custom" remote="github" revision="rr-o-rebase" />
     <!-- Sagit's Oreo Kernel -->
     <project path="kernel/xiaomi/msm8998" name="Demon000/kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1" />
+    <!-- Devicesettings -->
     <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="github" revision="lineage-15.1" />
+    <!-- Qcom common -->
+    <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="lineage-15.1" />
 </manifest>
