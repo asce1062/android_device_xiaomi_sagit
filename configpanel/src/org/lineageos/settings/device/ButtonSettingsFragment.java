@@ -44,20 +44,13 @@ public class ButtonSettingsFragment extends PreferenceFragment
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
+    public boolean onPreferenceChange(Preference pref, Object newValue) {
+        SwitchPreferenceBackend backend = Constants.sBackendsMap.get(pref.getKey());
+        Boolean value = (Boolean) newValue;
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String node = Constants.sBooleanNodePreferenceMap.get(preference.getKey());
-        if (!TextUtils.isEmpty(node) && FileUtils.isFileWritable(node)) {
-            Boolean value = (Boolean) newValue;
-            FileUtils.writeLine(node, value ? "1" : "0");
-            return true;
-        }
+        backend.setValue(value);
 
-        return false;
+        return true;
     }
 
     @Override
@@ -65,16 +58,19 @@ public class ButtonSettingsFragment extends PreferenceFragment
         super.addPreferencesFromResource(preferencesResId);
 
         // Initialize node preferences
-        for (String pref : Constants.sBooleanNodePreferenceMap.keySet()) {
-            SwitchPreference b = (SwitchPreference) findPreference(pref);
-            if (b == null) continue;
-            b.setOnPreferenceChangeListener(this);
-            String node = Constants.sBooleanNodePreferenceMap.get(pref);
-            if (FileUtils.isFileReadable(node)) {
-                String curNodeValue = FileUtils.readOneLine(node);
-                b.setChecked(curNodeValue.equals("1"));
+        for (String key : Constants.sBackendsMap.keySet()) {
+            SwitchPreference pref = (SwitchPreference) findPreference(key);
+            if (pref == null) {
+                continue;
+            }
+
+            pref.setOnPreferenceChangeListener(this);
+
+            SwitchPreferenceBackend backend = Constants.sBackendsMap.get(key);
+            if (!backend.isValid()) {
+                pref.setEnabled(false);
             } else {
-                b.setEnabled(false);
+                pref.setChecked(backend.getValue());
             }
         }
     }
