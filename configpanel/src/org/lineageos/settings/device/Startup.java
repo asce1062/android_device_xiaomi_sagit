@@ -32,19 +32,28 @@ public class Startup extends BroadcastReceiver {
 
     private static final String TAG = Startup.class.getSimpleName();
 
+    private static boolean isPreferenceEnabled(Context context, String key) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getBoolean(key, (Boolean) Constants.sNodeDefaultMap.get(key));
+    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
         if (lineageos.content.Intent.ACTION_INITIALIZE_LINEAGE_HARDWARE.equals(action)) {
             enableComponent(context, ButtonSettingsActivity.class.getName());
 
-            // Restore saved preference values
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-            for (String key : Constants.sBackendsMap.keySet()) {
-                SwitchPreferenceBackend backend = Constants.sBackendsMap.get(key);
-                Boolean value = preferences.getBoolean(key, backend.getDefaultValue());
+            // Restore nodes to saved preference values
+            for (String pref : Constants.sButtonPrefKeys) {
+                String node, value;
 
-                backend.setValue(value);
+                node = Constants.sBooleanNodePreferenceMap.get(pref);
+                value = isPreferenceEnabled(context, pref) ? "1" : "0";
+
+                if (!FileUtils.writeLine(node, value)) {
+                    Log.w(TAG, "Write to node " + node +
+                        " failed while restoring saved preference values");
+                }
             }
         }
     }

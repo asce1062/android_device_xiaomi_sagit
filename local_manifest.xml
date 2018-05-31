@@ -14,4 +14,6 @@
     <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="github" revision="lineage-15.1" />
     <!-- Qcom common -->
     <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="lineage-15.1" />
+    <!-- OTA Config -->
+    <project path="rr" name="LMMFHHO/OTA" remote="github" revision="master">
 </manifest>
