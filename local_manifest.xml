@@ -9,11 +9,9 @@
     <!-- Sagit Xiaomi Common-->
     <project path="vendor/xiaomi/custom" name="asce1062/proprietary_vendor_xiaomi_custom" remote="github" revision="rr-o-rebase" />
     <!-- Sagit's Oreo Kernel -->
-    <project path="kernel/xiaomi/msm8998" name="Demon000/kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1" />
+    <project path="kernel/xiaomi/msm8998" name="Demon000/kernel_xiaomi_msm8998" remote="github" revision="lineage-15.1-UM.6.4.r1-08500" />
     <!-- Devicesettings -->
     <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="github" revision="lineage-15.1" />
     <!-- Qcom common -->
     <project path="device/qcom/common" name="LineageOS/android_device_qcom_common" remote="github" revision="lineage-15.1" />
-    <!-- OTA Config -->
-    <project path="rr" name="LMMFHHO/OTA" remote="github" revision="master">
 </manifest>
