@@ -16,3 +16,6 @@ BUILD_FINGERPRINT := Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.2.3.0.OCAMIEK:u
 
 # Bootanimation
 TARGET_SCREEN_WIDTH := 1080
+
+PRODUCT_PACKAGES += \
+    messaging
