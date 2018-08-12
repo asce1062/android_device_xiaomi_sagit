@@ -93,6 +93,8 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
+    <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
+    <bool name="config_swipe_up_gesture_setting_available">true</bool>
 
     <!-- Button backlight -->
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
