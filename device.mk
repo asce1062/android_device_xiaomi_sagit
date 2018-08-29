@@ -45,7 +45,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     XiaomiParts
 
-$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/config.mk)
+$(call inherit-product, vendor/goodies/config.mk)
 
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/sagit/sagit-vendor.mk)
