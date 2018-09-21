@@ -41,10 +41,6 @@ PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl \
     android.hardware.ir@1.0-service
 
-#XiaomiParts
-PRODUCT_PACKAGES += \
-    XiaomiParts
-
 $(call inherit-product, vendor/goodies/config.mk)
 
 # Call the proprietary setup
