@@ -59,6 +59,7 @@
         <item>3000</item>
         <item>3540</item>
         <item>4000</item>
+        <item>12000</item>        
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -96,9 +97,18 @@
         <item>145</item>
         <item>180</item>
         <item>200</item>
+        <item>225</item>        
         <item>240</item>
         <item>255</item>
     </integer-array>
+
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">3250</integer>
 
     <!-- Indicate whether to allow the device to suspend when the screen is off
          due to the proximity sensor.  This resource should only be set to true
