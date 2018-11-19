@@ -176,6 +176,3 @@ vendor/lib64/vendor.goodix.hardware.fingerprintextension@1.0.so
 # Sensors
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
-
-# Thermal
-vendor/etc/thermal-engine-8998.conf
