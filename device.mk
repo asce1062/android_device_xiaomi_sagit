@@ -54,7 +54,5 @@ PRODUCT_PACKAGES += \
     init.tfa.sh \
     tinyplay
 
-$(call inherit-product, vendor/goodies/config.mk)
-
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/sagit/sagit-vendor.mk)

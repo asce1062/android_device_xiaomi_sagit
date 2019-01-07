@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,16 +19,33 @@
 # product configuration (apps).
 #
 
-# Inherit from those products. Most specific first.
+$(call inherit-product, device/xiaomi/sagit/full_sagit.mk)
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from sagit device
-$(call inherit-product, device/xiaomi/sagit/device.mk)
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
-# Device identifier. This must come after all inclusions
-PRODUCT_NAME := full_sagit
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# must be before including omni part
+TARGET_BOOTANIMATION_SIZE := 1080p
+
+# Inherit some common Omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_NAME := omni_sagit
 PRODUCT_DEVICE := sagit
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 6
 PRODUCT_MANUFACTURER := Xiaomi
+
+# Google client ID.
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE="sagit" \
+    PRODUCT_NAME="sagit" \
+    BUILD_FINGERPRINT="Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.5.3.0.OCAMIFA:user/release-keys" \
+    PRIVATE_BUILD_DESC="sagit-user 8.0.0 OPR1.170623.027 V9.5.3.0.OCAMIFA release-keys"
