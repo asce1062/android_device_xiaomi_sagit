@@ -24,18 +24,18 @@ $(call inherit-product, device/xiaomi/sagit/full_sagit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, vendor/rr/config/gsm.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# must be before including omni part
+# must be before including RR part
 TARGET_BOOTANIMATION_SIZE := 1080p
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit some common rr stuff.
+$(call inherit-product, vendor/rr/config/common.mk)
 
-PRODUCT_NAME := omni_sagit
+PRODUCT_NAME := rr_sagit
 PRODUCT_DEVICE := sagit
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 6

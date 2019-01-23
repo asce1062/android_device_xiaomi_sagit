@@ -20,6 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo omni_sagit-user
-add_lunch_combo omni_sagit-userdebug
-add_lunch_combo omni_sagit-eng
+add_lunch_combo rr_sagit-user
+add_lunch_combo rr_sagit-userdebug
+add_lunch_combo rr_sagit-eng
