@@ -1,8 +1,31 @@
 [
   {
     "remote": "github",
-    "repository": "omni-p/android_device_xiaomi_msm8998-common",
+    "repository": "asce1062/proprietary_vendor_xiaomi_sagit",
+    "target_path": "vendor/xiaomi/sagit",
+    "revision": "rr-p"
+  },
+  {
+    "remote": "github",
+    "repository": "asce1062/device_xiaomi_msm8998-common",
     "target_path": "device/xiaomi/msm8998-common",
+    "revision": "rr-p"
+  },
+  {
+    "remote": "github",
+    "repository": "asce1062/proprietary_vendor_xiaomi_msm8998-common",
+    "target_path": "vendor/xiaomi/msm8998-common",
+    "revision": "rr-p"
+  },
+  {
+    "remote": "github",
+    "repository": "omni-p/android_kernel_xiaomi_msm8998",
+    "target_path": "kernel/xiaomi/msm8998",
     "revision": "android-9.0"
+  },
+    "remote": "github",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "revision": "lineage-16.0"
   }
 ]
