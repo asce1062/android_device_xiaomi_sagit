@@ -37,5 +37,8 @@ TARGET_OTA_ASSERT_DEVICE := sagit
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw	JAVA_SOURCE_OVERLAYS += org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
+
 # Inherit from proprietary files
 include vendor/xiaomi/sagit/BoardConfigVendor.mk
