@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!-- Sagit's config -->
+    <project path="device/xiaomi/sagit" name="asce1062/android_device_xiaomi_sagit" remote="github" revision="rr-p-arian" />
+    <project path="vendor/xiaomi/sagit" name="asce1062/proprietary_vendor_xiaomi_sagit" remote="github" revision="rr-p-arian" />
+    <!-- msm8998-common's config -->
+    <project path="device/xiaomi/msm8998-common" name="xiaomi-msm8998/device_xiaomi_msm8998-common" remote="github" revision="lineage-16.0" />
+    <project path="vendor/xiaomi/msm8998-common" name="asce1062/proprietary_vendor_xiaomi_msm8998-common" remote="github" revision="rr-p-arian" />
+    <!-- Sagit's Pie Kernel -->
+    <project path="kernel/xiaomi/msm8998" name="xiaomi-msm8998/kernel_xiaomi_msm8998" remote="github" revision="9.x" />
+    <!-- Devicesettings -->
+    <project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="github" revision="lineage-16.0" />
+</manifest>
